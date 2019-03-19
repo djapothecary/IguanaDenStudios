@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+    <head>
+        {% block head %}
+
+            {% block metas %}
+                <meta charset="utf-8">
+                <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+            {% endblock metas %}
+
+        <title>
+            {% block title %}
+            {% endblock title -%}
+            - Iguana Den Studios
+        </title>
+
+            {% block styles %}
+                <link rel="stylesheet" type="text/css" media="screen" href="/static/css/bootstrap.css">
+                <link rel="stylesheet" type="text/css" media="screen" href="/static/css/bootstrap-grid.css">
+                <link rel="stlyesheet" type="text/css" media="screen" href="/static/css/bootstrap-reboot.css">
+                <link rel="stylesheet" type="text/css" media="screen" href="/static/css/apothstyles.css">
+            {% endblock styles %}
+
+        {% endblock head %}
+    </head>
+    <body>
+        <header>
+            <div class="container-fluid">
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                    <a class="navbar-brand" href="{{ url_for('index') }}">
+                        <img class="apoth-ids-brand" src="/static/images/iguana-den-studios.jpg" alt="iguana den studios"
+                        style="width: 100px; height: 50px;">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav">
+                            <a class="nav-item nav-link active" href="{{ url_for('index') }}">Home <span class="sr-only">(current)</span></a>
+                            <a class="nav-item nav-link" href="{{ url_for('about_us.about_us') }}">About Iguana Den Studios</a>
+                            <a class="nav-item nav-link" href="{{ url_for('tracklists.tracklists') }}">Tracklists</a>
+                            <a class="nav-item nav-link" href="{{ url_for('mastering.mastering') }}">Mastering</a>
+                            {% if current_user.is_authenticated %}
+                                <a class="nav-item nav-link" href="{{ url_for('upload.upload') }}">Upload</a>
+                                <a class="nav-item nav-link" href="{{ url_for('sign_in.logout') }}">Logout</a>
+                            {% else %}
+                                <a class="nav-item nav-link" href="{{ url_for('register.register') }}">Register</a>
+                                <a class="nav-item nav-link" href="{{ url_for('sign_in.sign_in') }}">Sign in</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        {% block content %}
+
+        {% endblock content %}
+
+        <footer></footer>
+        {% block scripts %}
+            <script src="/static/js/jquery-3.3.1.js"></script>
+            <script src="/static/js/util.js"></script>
+            <script src="/static/js/bootstrap.js"></script>
+            <script src="/static/js/button.js"></script>
+            <script src="/static/js/collapse.js"></script>
+            <!-- <script src="/static/js/alert.js"></script>
+            <script src="/static/js/button.js"></script>
+            <script src="/static/js/carousel.js"></script>
+            <script src="/static/js/collapse.js"></script>
+            <script src="/static/js/dropdown.js"></script>
+            <script src="/static/js/index.js"></script>
+            <script src="/static/js/modal.js"></script>
+            <script src="/static/js/popover.js"></script>
+            <script src="/static/js/scrollspy.js"></script>
+            <script src="/static//js/tab.js"></script>
+            <script src="/static/js/toast.js"></script>
+            <script src="/static/js/tooltip.js"></script>
+            <script src="/static/js/util.js"></script> -->
+        {% endblock scripts  %}
+    </body>
+</html>
