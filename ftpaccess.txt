@@ -1,5 +1,0 @@
-user:   Apoth
-pass:   b1#98dLx
-
-ftp account name:    streams
-home directory:     /streams
