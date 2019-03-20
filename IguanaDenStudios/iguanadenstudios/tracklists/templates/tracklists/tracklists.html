@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="apoth-jumbotron jumbotron">
+    <h1>Tracklists Page</h1>
+</div>
+
+<div class="container-fluid">
+    <div class="row no-gutters">
+        <div class="col col-lg-3 align-self-start">
+            {% with tracklist_details = tracklist_details %}
+                {% include 'sidenav.html' %}
+            {% endwith %}
+        </div>
+        <div class="col-lg-9 apoth-row-negative-margin-left">
+            {% with tracklist_details = tracklist_details %}
+                {% include 'listdisplay.html' %}
+            {% endwith %}
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
