@@ -13,6 +13,7 @@ Flask-SQLAlchemy==2.3.2
 Flask-WTF==0.14.2
 Flask-JWT==0.3.2
 Flask-RESTful==0.3.7
+gunicorn==0.17.0
 httplib2==0.11.3
 idna==2.6
 itsdangerous==0.24
@@ -30,7 +31,6 @@ requests-oauthlib==0.8.0
 six==1.11.0
 SQLAlchemy==1.2.6
 SQLAlchemy-Utils==0.33.2
-urllib3==1.22
 URLObject==2.4.3
 Werkzeug==0.14.1
 wincertstore==0.2
