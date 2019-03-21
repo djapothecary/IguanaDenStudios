@@ -8,15 +8,9 @@ tracklists_blueprint = Blueprint('tracklists', __name__,
 
 @tracklists_blueprint.route('/tracklists')
 def tracklists():
-    # artist_tracklist_name = [TracklistName.query.all()]
-
-    # for name, ind in artist_tracklist_name:
-    #     return render_template('tracklists.html',
-    #                             artist_tracklist_name = artist_tracklist_name[0][name]
-    #                             )
-    for tracklist, ind in TracklistName.query.all():
-        return render_template('tracklists.html',
-                                artist_tracklist_name = tracklist(ind))
+    artist_tracklist_name = TracklistName.query.all()
+    return render_template('tracklists.html',
+                            artist_tracklist_name = artist_tracklist_name)
 
 # @tracklists_blueprint.route('/load_tracklist', methods = ['GET', 'POST'])
 # def load_tracklist():
