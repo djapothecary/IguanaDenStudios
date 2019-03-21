@@ -25,9 +25,14 @@ def tracklists():
 
 @tracklists_blueprint.route('/<int:tracklist_details_id>')
 def load_tracklist(tracklist_details_id):
-    tracklist_details = TracklistDetails.query.get_or_404(tracklist_details_id)
+    tracklist_details = TracklistDetails.query.filter_by(tracklist_details_id)
+    td_list = []
 
-    return render_template('sidenav.html',
-                            track_artist = tracklist_details.track_artist,
-                            track_title = tracklist_details.track_title,
-                            tracklist_details = tracklist_details)
+    for item in tracklist_details:
+        td_list.append(td_list)
+
+
+    return render_template('listdisplay.html',
+                            # track_artist = tracklist_details.track_artist,
+                            # track_title = tracklist_details.track_title,
+                            tracklist_details = td_list)
