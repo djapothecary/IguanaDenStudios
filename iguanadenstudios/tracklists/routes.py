@@ -23,7 +23,8 @@ def tracklists():
 
 @tracklists_blueprint.route('/<int:tracklist_name_id>')
 def load_tracklist(tracklist_name_id):
-    tracklist_details = [TracklistDetails.query.get(tracklist_name_id)]
+    # tracklist_details = [TracklistDetails.query.get(tracklist_name_id)]
+    tracklist_details = TracklistDetails.query.join(TracklistName).all()
     td_list = []
 
     for item in tracklist_details:
