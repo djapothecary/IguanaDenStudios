@@ -31,18 +31,20 @@ def upload():
         db.session.commit()
 
         for track in uploadform.tracklist_mix_details.data.split('\r\n'):
+            #   might be able to refactor this
             track_artist = track.split('-', maxsplit = 1)[0]
             track_title = track.split('-', maxsplit = 1)[1]
+            tracklist_name_id = tracklistname.id
 
-            details = TracklistDetails(track_artist.rstrip(), track_title.rstrip())
+            details = TracklistDetails(track_artist.rstrip(), track_title.rstrip(), tracklist_name_id)
             db.session.add(details)
             db.session.commit()
 
-            next = request.args.get('next')
+        next = request.args.get('next')
 
-            if next == None or not next[0] == '/':
-                next = url_for('tracklists.tracklists')
+        if next == None or not next[0] == '/':
+            next = url_for('tracklists.tracklists')
 
-            return redirect(next)
+        return redirect(next)
 
     return render_template('/upload.html', form = uploadform)

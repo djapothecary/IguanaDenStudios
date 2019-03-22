@@ -21,9 +21,9 @@ def tracklists():
 #     return render_template('tracklists.html',
 #                             tracklist_to_load = tracklist_to_load)
 
-@tracklists_blueprint.route('/<int:tracklist_details_id>')
-def load_tracklist(tracklist_details_id):
-    tracklist_details = [TracklistDetails.query.get(tracklist_details_id)]
+@tracklists_blueprint.route('/<int:tracklist_name_id>')
+def load_tracklist(tracklist_name_id):
+    tracklist_details = [TracklistDetails.query.get(tracklist_name_id)]
     td_list = []
 
     for item in tracklist_details:

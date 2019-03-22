@@ -3,7 +3,7 @@ from datetime import datetime
 
 class TracklistName(db.Model):
 
-    __tablename__ = 'tracklist_name'
+    __tablename__ = 'tracklist_names'
 
     id = db.Column(db.Integer, primary_key = True)
     artist_dj_name = db.Column(db.String)
@@ -22,13 +22,14 @@ class TracklistDetails(db.Model):
     __tablename__ = 'tracklist_details'
 
     #create relationship
-    tracklistname = db.relationship(TracklistName)
+    tracklist_name = db.relationship(TracklistName)
 
     id = db.Column(db.Integer, primary_key = True)
     track_artist = db.Column(db.String)
     track_title = db.Column(db.String)
-    tracklist_name_id = db.Column(db.Integer, db.ForeignKey('tracklist_name.id'))
+    tracklist_name_id = db.Column(db.Integer, db.ForeignKey('tracklist_names.id'))
 
-    def __init__ (self, track_artist, track_title):
+    def __init__ (self, track_artist, track_title, tracklist_name_id):
         self.track_artist = track_artist
         self.track_title = track_title
+        self.tracklist_name_id = tracklist_name_id
