@@ -20,13 +20,13 @@
                                 aria-expanded="false" aria-controls="{{ artist.artist_dj_name|replace(' ', '_') }}">
                             {% if artist.tracklist_mix_name == None %}
                                 <div class="collapse list-group-item list-group-item-action" id="{{ artist.artist_dj_name|replace(' ', '_') }}">
-                                    <a href="{{ url_for('tracklists.load_tracklist', tracklist_name_id = artist.id) }}">
+                                    <a href="{{ url_for('tracklists.load_tracklist', artist_dj_name = artist.artist_dj_name) }}">
                                         Untitled mix uploaded {{ artist.upload_date }}
                                     </a>
                                 </div>
                             {% else %}
                                 <div class="collapse list-group-item list-group-item-action" id="{{ artist.artist_dj_name|replace(' ', '_') }}">
-                                    <a href="{{ url_for('tracklists.load_tracklist', tracklist_name_id = artist.id) }}">
+                                    <a href="{{ url_for('tracklists.load_tracklist', artist_dj_name = artist.artist_dj_name) }}">
                                         {{ artist.tracklist_mix_name }}
                                     </a>
                                 </div>

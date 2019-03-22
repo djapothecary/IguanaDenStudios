@@ -27,7 +27,7 @@ class TracklistDetails(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     track_artist = db.Column(db.String)
     track_title = db.Column(db.String)
-    tracklist_name_id = db.Column(db.Integer, db.ForeignKey('tracklist_names.id'))
+    tracklist_name_id = db.Column(db.String, db.ForeignKey('tracklist_names.artist_dj_name'))
 
     def __init__ (self, track_artist, track_title, tracklist_name_id):
         self.track_artist = track_artist
