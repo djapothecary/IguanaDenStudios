@@ -13,6 +13,15 @@ def tracklists():
     return render_template('tracklists.html',
                             artist_tracklist_name = artist_tracklist_name)
 
+# @tracklists_blueprint.route('/load_tracklist', methods = ['GET', 'POST'])
+# def load_tracklist():
+#     #id = form.id.data
+#     id = request.form['id']
+#     tracklist_to_load = TracklistDetails.query.get(id)
+
+#     return render_template('tracklists.html',
+#                             tracklist_to_load = tracklist_to_load)
+
 @tracklists_blueprint.route('/<string:artist_dj_name>')
 def load_tracklist(artist_dj_name):
     # tracklist_details = [TracklistDetails.query.get(tracklist_name_id)]
