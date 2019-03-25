@@ -14,6 +14,9 @@
             {% endwith %}
         </div>
         <div class="col-lg-9 apoth-row-negative-margin-left">
+            {% with tracklist_display = tracklist_display %}
+                {%include sidenav_tracklist_display %}
+            {% endwith %}
             {% with td_list = td_list %}
                 {% include 'listdisplay.html' %}
             {% endwith %}
