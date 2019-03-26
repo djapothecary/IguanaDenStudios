@@ -59,7 +59,29 @@
 
         {% endblock content %}
 
-        <footer></footer>
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="column">
+                        <a class="nav-item nav-link col active" href="{{ url_for('index') }}">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-item nav-link col" href="{{ url_for('about_us.about_us') }}">About Iguana Den Studios</a>
+                        <a class="nav-item nav-link col" href="{{ url_for('tracklists.tracklists') }}">Tracklists</a>
+                    </div>
+                    <div class="row">
+                        <div class="column">
+                            <a class="nav-item nav-link col" href="{{ url_for('mastering.mastering') }}">Mastering</a>
+                            {% if current_user.is_authenticated %}
+                                <a class="nav-item nav-link col" href="{{ url_for('upload.upload') }}">Upload</a>
+                                <a class="nav-item nav-link col" href="{{ url_for('sign_in.logout') }}">Logout</a>
+                            {% else %}
+                                <a class="nav-item nav-link col" href="{{ url_for('register.register') }}">Register</a>
+                                <a class="nav-item nav-link col" href="{{ url_for('sign_in.sign_in') }}">Sign in</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
         {% block scripts %}
             <script src="/static/js/jquery-3.3.1.js"></script>
             <script src="/static/js/util.js"></script>
