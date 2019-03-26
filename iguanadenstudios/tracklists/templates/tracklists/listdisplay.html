@@ -1,21 +1,18 @@
 {% block listdisplay %}
 
-    <!-- <div class="container"> -->
-        <!-- <div class="row no-gutters"> -->
-            <div class="col-md-8 align-self-start">
-                {% for track in td_list %}
+    <div class="col-md-8 align-self-start">
+        {% for track in td_list %}
+        <ul class="apoth-list-group apoth-list-group-flush">
+            <li class="apoth-list-group-item">
+                {{ track.track_artist }}
                 <ul class="apoth-list-group apoth-list-group-flush">
                     <li class="apoth-list-group-item">
-                        {{ track.track_artist }}
-                        <ul class="apoth-list-group apoth-list-group-flush">
-                            <li class="apoth-list-group-item">
-                                {{ track.track_title}}
-                            </li>
-                        </ul>
+                        {{ track.track_title}}
                     </li>
                 </ul>
-                {% endfor %}
-            </div>
-        <!-- </div> -->
-    <!-- </div> -->
+            </li>
+        </ul>
+        {% endfor %}
+    </div>
+
 {% endblock listdisplay %}
