@@ -41,7 +41,6 @@
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav">
                             <a class="nav-item nav-link active" href="{{ url_for('index') }}">Home <span class="sr-only">(current)</span></a>
-                            <a class="nav-item nav-link" href="{{ url_for('about_us.about_us') }}">About Iguana Den Studios</a>
                             <a class="nav-item nav-link" href="{{ url_for('tracklists.tracklists') }}">Tracklists</a>
                             <a class="nav-item nav-link" href="{{ url_for('mastering.mastering') }}">Mastering</a>
                             {% if current_user.is_authenticated %}
