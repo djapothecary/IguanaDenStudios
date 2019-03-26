@@ -14,13 +14,24 @@ def tracklists():
 
 @tracklists_blueprint.route('/<string:artist_dj_name>')
 def load_tracklist_display(artist_dj_name):
+    # tracklist_details = [TracklistDetails.query.get(tracklist_name_id)]
+    #tracklist_details = [TracklistDetails.query.get(artist_dj_name)]
+    tracklist_details = TracklistDetails.query.outerjoin(TracklistName).all()
+    td_list = []
 
-    # tracklist_display = TracklistName.query.group_by('artist_dj_name').all()
-    tracklist_display = TracklistName.query.all()
+    for item in tracklist_details:
+        td_list.append(item)
+
+    #tracklist_details = TracklistDetails.query(TracklistDetails).filter_by(id = tracklist_details_id).first()
+
+    artist_tracklist_name = TracklistName.query.group_by('artist_dj_name').all()
 
 
     return render_template('tracklists.html',
-                            tracklist_display = tracklist_display)
+                            # track_artist = tracklist_details.track_artist,
+                            # track_title = tracklist_details.track_title,
+                            artist_tracklist_name = artist_tracklist_name,
+                            td_list = td_list)
 
 @tracklists_blueprint.route('/<string:artist_dj_name>')
 def load_tracklist(artist_dj_name):
