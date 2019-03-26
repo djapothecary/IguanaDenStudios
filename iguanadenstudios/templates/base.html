@@ -19,6 +19,8 @@
             <link rel="stylesheet" type="text/css" media="screen" href="/static/css/bootstrap.css">
             <link rel="stylesheet" type="text/css" media="screen" href="/static/css/bootstrap-grid.css">
             <link rel="stlyesheet" type="text/css" media="screen" href="/static/css/bootstrap-reboot.css">
+            <link rel="stlyesheet" type="text/css" media="screen" href="/static/css/mdb.css">
+            <link rel="stlyesheet" type="text/css" media="screen" href="/static/css/style.css">
             <link rel="stylesheet" type="text/css" media="screen" href="/static/css/apothstyles.css">
         {% endblock styles %}
 
@@ -59,29 +61,9 @@
 
         {% endblock content %}
 
-        <footer>
-            <div class="container">
-                <div class="row">
-                    <div class="column">
-                        <a class="nav-item nav-link col active" href="{{ url_for('index') }}">Home <span class="sr-only">(current)</span></a>
-                        <a class="nav-item nav-link col" href="{{ url_for('about_us.about_us') }}">About Iguana Den Studios</a>
-                        <a class="nav-item nav-link col" href="{{ url_for('tracklists.tracklists') }}">Tracklists</a>
-                    </div>
-                    <div class="row">
-                        <div class="column">
-                            <a class="nav-item nav-link col" href="{{ url_for('mastering.mastering') }}">Mastering</a>
-                            {% if current_user.is_authenticated %}
-                                <a class="nav-item nav-link col" href="{{ url_for('upload.upload') }}">Upload</a>
-                                <a class="nav-item nav-link col" href="{{ url_for('sign_in.logout') }}">Logout</a>
-                            {% else %}
-                                <a class="nav-item nav-link col" href="{{ url_for('register.register') }}">Register</a>
-                                <a class="nav-item nav-link col" href="{{ url_for('sign_in.sign_in') }}">Sign in</a>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
+        {% block footer %}
+            {% include 'footer.html' %}
+        {% endblock footer %}
         {% block scripts %}
             <script src="/static/js/jquery-3.3.1.js"></script>
             <script src="/static/js/util.js"></script>
@@ -101,6 +83,7 @@
             <script src="/static/js/toast.js"></script>
             <script src="/static/js/tooltip.js"></script>
             <script src="/static/js/util.js"></script>
+            <script src="/static/js/mdb.js"></script>
         {% endblock scripts  %}
     </body>
 </html>
