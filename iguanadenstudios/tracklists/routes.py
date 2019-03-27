@@ -12,11 +12,11 @@ def tracklists():
     return render_template('tracklists.html',
                             artist_tracklist_name = artist_tracklist_name)
 
-@tracklists_blueprint.route('/<string:artist_dj_name>')
-def load_tracklist(artist_dj_name):
-    # tracklist_details = [TracklistDetails.query.get(tracklist_name_id)]
+@tracklists_blueprint.route('/<int:tracklist_name_id>')
+def load_tracklist(tracklist_name_id):
+    tracklist_details = [TracklistDetails.query.get(tracklist_name_id)]
     #tracklist_details = [TracklistDetails.query.get(artist_dj_name)]
-    tracklist_details = TracklistDetails.query.outerjoin(TracklistName).all()
+    # tracklist_details = TracklistDetails.query.outerjoin(TracklistName).all()
     td_list = []
 
     for item in tracklist_details:
