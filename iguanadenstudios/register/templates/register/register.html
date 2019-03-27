@@ -1,42 +1,44 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="apoth-jumbotron jumbotron">
-        <form method='POST'>
-            {{ form.hidden_tag() }}
-            <div class="form-group row">
-                {{ form.email.label(class="col-sm-2 col-form-label col-form-label-sm") }}
-                <div class="col-sm-5">
-                    {{ form.email(class="form-control form-control-sm") }}
+    <div class="container">
+        <div class="apoth-jumbotron jumbotron">
+            <form method='POST'>
+                {{ form.hidden_tag() }}
+                <div class="form-group row">
+                    {{ form.email.label(class="col-sm-2 col-form-label col-form-label-sm") }}
+                    <div class="col-sm-5">
+                        {{ form.email(class="form-control form-control-sm") }}
+                    </div>
                 </div>
-            </div>
-            <br>
-            <div class="form-group row">
-                {{ form.username.label(class="col-sm-2 col-form-label col-form-label-sm") }}
-                <div class="col-sm-5">
-                    {{ form.username(class="form-control form-control-sm") }}
+                <br>
+                <div class="form-group row">
+                    {{ form.username.label(class="col-sm-2 col-form-label col-form-label-sm") }}
+                    <div class="col-sm-5">
+                        {{ form.username(class="form-control form-control-sm") }}
+                    </div>
                 </div>
-            </div>
-            <br>
-            <div class="form-group row">
-                {{ form.password.label(class="col-sm-2 col-form-label col-form-label-sm") }}
-                <div class="col-sm-5">
-                    {{ form.password(class="form-control form-control-sm") }}
+                <br>
+                <div class="form-group row">
+                    {{ form.password.label(class="col-sm-2 col-form-label col-form-label-sm") }}
+                    <div class="col-sm-5">
+                        {{ form.password(class="form-control form-control-sm") }}
+                    </div>
                 </div>
-            </div>
-            <br>
-            <div class="form-group row">
-                {{ form.pass_confirm.label(class="col-sm-2 col-form-label col-form-label-sm") }}
-                <div class="col-sm-5">
-                    {{ form.pass_confirm(class="form-control form-control-sm") }}
+                <br>
+                <div class="form-group row">
+                    {{ form.pass_confirm.label(class="col-sm-2 col-form-label col-form-label-sm") }}
+                    <div class="col-sm-5">
+                        {{ form.pass_confirm(class="form-control form-control-sm") }}
+                    </div>
                 </div>
-            </div>
-            <br>
-            <div class="form-group row">
-                <div class="col-sm-5">
-                    {{ form.submit(class="btn btn-primary") }}
+                <br>
+                <div class="form-group row">
+                    <div class="col-sm-5">
+                        {{ form.submit(class="btn btn-primary") }}
+                    </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
 {% endblock content %}
