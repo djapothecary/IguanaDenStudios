@@ -11,50 +11,55 @@
                 <h5 class="text-uppercase">Footer Content</h5>
                 <p>Here you can use rows and columns here to organize your footer content.</p>
             </div>
-            <!-- Grid column -->
-            <hr class="clearfix w-100 d-md-none pb-3">
-            <!-- Grid column -->
-            <div class="col-md-3 mb-md-0 mb-3">
-                <!-- Links -->
-                <h5 class="text-uppercase">Links</h5>
-                <ul class="list-unstyled">
-                    <li>
-                        <a class="nav-item nav-link active" href="{{ url_for('index') }}">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li>
-                        <a class="nav-item nav-link" href="{{ url_for('about_us.about_us') }}">About Iguana Den Studios</a>
-                    </li>
-                    <li>
-                        <a class="nav-item nav-link" href="{{ url_for('tracklists.tracklists') }}">Tracklists</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- Grid column -->
-            <!-- Grid column -->
-            <div class="col-md-3 mb-md-0 mb-3">
-                <!-- Links -->
-                <h5 class="text-uppercase">Links</h5>
-                <ul class="list-unstyled">
-                    {% if current_user.is_authenticated %}
-                    <li>
-                        <a class="nav-item nav-link" href="{{ url_for('upload.upload') }}">Upload</a>
-                    </li>
-                    <li>
-                        <a class="nav-item nav-link" href="{{ url_for('sign_in.logout') }}">Logout</a>
-                    </li>
-                    {% else %}
-                    <li>
-                        <a class="nav-item nav-link" href="{{ url_for('register.register') }}">Register</a>
-                    </li>
-                    <li>
-                        <a class="nav-item nav-link" href="{{ url_for('sign_in.sign_in') }}">Sign in</a>
-                    </li>
-                    {% endif %}
-                </ul>
-            </div>
-            <!-- Grid column -->
         </div>
+        <br>
+        <div class="container-fluid text-center text-md-left">
+            <div class="row">
+                <!-- Grid column -->
+                <hr class="clearfix w-100 d-md-none pb-3">
+                <!-- Grid column -->
+                <div class="col-md-8 mb-md-0 mb-3 text-center">
+                    <!-- Links -->
+                    <h5 class="text-uppercase">Links</h5>
+                    <ul class="list-unstyled">
+                        <li>
+                            <a class="nav-item nav-link active" href="{{ url_for('index') }}">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li>
+                            <a class="nav-item nav-link" href="{{ url_for('about_us.about_us') }}">About Iguana Den Studios</a>
+                        </li>
+                        <li>
+                            <a class="nav-item nav-link" href="{{ url_for('tracklists.tracklists') }}">Tracklists</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Grid column -->
+                <!-- Grid column -->
+                <div class="col-md-3 mb-md-0 mb-3">
+                    <!-- Links -->
+                    <h5 class="text-uppercase">Links</h5>
+                    <ul class="list-unstyled">
+                        {% if current_user.is_authenticated %}
+                        <li>
+                            <a class="nav-item nav-link" href="{{ url_for('upload.upload') }}">Upload</a>
+                        </li>
+                        <li>
+                            <a class="nav-item nav-link" href="{{ url_for('sign_in.logout') }}">Logout</a>
+                        </li>
+                        {% else %}
+                        <li>
+                            <a class="nav-item nav-link" href="{{ url_for('register.register') }}">Register</a>
+                        </li>
+                        <li>
+                            <a class="nav-item nav-link" href="{{ url_for('sign_in.sign_in') }}">Sign in</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+                <!-- Grid column -->
+            </div>
         <!-- Grid row -->
+        </div>
     </div>
     <!-- Footer Links -->
     <!-- Copyright -->
