@@ -1,4 +1,5 @@
 import os
+import urllib
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -12,7 +13,12 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'iguanadenstudios'
 
 basedir = os.path.abspath(os.path.dirname(__file__))
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'data.sqlite')
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'data.sqlite')
+# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+#   using MS SQL Server
+params = urllib.parse.quote_plus('DRIVER={SQL Server};SERVER=184.168.47.10;DATABASE=IguanaDenStudios;UID=Apoth;PWD=$6qul62H;')
+app.config['SQLALCHEMY_DATABASE_URI'] = "mssql+pyodbc:///?odbc_connect=%s" % params
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)

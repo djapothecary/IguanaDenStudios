@@ -22,7 +22,9 @@ def sign_in():
     if form.validate_on_submit():
         user = User.query.filter_by(email = form.email.data).first()
 
-        if user.check_password(form.password.data) and user is not None:
+        # if user.check_password(form.password.data) and user is not None:
+        # MS SQL
+        if user.check_password(form.password.data):
             login_user(user)
             flash('Login Successful!')
 

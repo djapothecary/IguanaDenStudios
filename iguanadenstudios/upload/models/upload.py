@@ -10,6 +10,7 @@ class TracklistName(db.Model):
     tracklist_mix_name = db.Column(db.String)
     upload_date = db.Column(db.DateTime, default = datetime.utcnow)
     # backrefs need to be unique
+    tracklist_id = db.relationship('TracklistDetails', backref = 'artist_dj_id', lazy = True)
     dj_name = db.relationship('TracklistDetails', backref = 'artist_dj_name', lazy = True)
     mix_name = db.relationship('TracklistDetails', backref = 'tracklist_mix_name', lazy = True)
 
@@ -27,7 +28,7 @@ class TracklistDetails(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     track_artist = db.Column(db.String)
     track_title = db.Column(db.String)
-    tracklist_name_id = db.Column(db.String, db.ForeignKey('tracklist_names.artist_dj_name'))
+    tracklist_name_id = db.Column(db.Integer, db.ForeignKey('tracklist_names.id'))
 
     def __init__ (self, track_artist, track_title, tracklist_name_id):
         self.track_artist = track_artist
