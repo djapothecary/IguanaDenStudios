@@ -2,21 +2,13 @@
 
     <div class="container">
         <div class="row no-gutters">
-                <div class="col-md-8">
-                    {% for artist in artist_tracklist_name %}
-                    <div class="list-group list-group-flush">
-                        <button type="button" class="list-group-item list-group-item-action active"
-                                        data-toggle="collapse" data-target="#{{ artist.artist_dj_name|replace(' ', '_') }}"
-                                        aria-expanded="false" aria-controls="{{ artist.artist_dj_name|replace(' ', '_') }}">
-                            {{ artist.artist_dj_name }}
-                            <span class="badge badge-light">12</span>
-                        </button>
-                    </div>
-                    <div class="row no-gutters">
-                        <div class="col-md-8 apoth-offset-md-1">
-                            <div class="list-group list-group-flush" class="list-group-item list-group-item-action"
+            <div class="col-md-8">
+                {% for artist in artist_tracklist_name %}
+                <div class="list-group list-group-flush">
+                    <button type="button" class="list-group-item list-group-item-action active"
                                     data-toggle="collapse" data-target="#{{ artist.artist_dj_name|replace(' ', '_') }}"
                                     aria-expanded="false" aria-controls="{{ artist.artist_dj_name|replace(' ', '_') }}">
+<<<<<<< HEAD
                                 {% if artist.tracklist_mix_name == None %}
                                     <div class="collapse list-group-item list-group-item-action" id="{{ artist.artist_dj_name|replace(' ', '_') }}">
                                         <a href="{{ url_for('tracklists.load_tracklist', artist_dj_name = artist.artist_dj_name) }}">
@@ -34,7 +26,17 @@
                         </div>
                     </div>
                     {% endfor %}
+=======
+                        {{ artist.artist_dj_name }}
+                        <span class="badge badge-light">12</span>
+                    </button>
+>>>>>>> 4a1aa22147b87484ecf911037620f21e824cbe2b
                 </div>
+                {% endfor %}
+            </div>
+            {% with djs_tracklists = tracklist_name_list %}
+                {% include 'djs_tracklists.html' %}
+            {% endwith %}
         </div>
     </div>
 
