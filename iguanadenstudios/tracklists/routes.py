@@ -10,50 +10,32 @@ tracklists_blueprint = Blueprint('tracklists', __name__,
 def tracklists():
     #artist_tracklist_name = TracklistName.query.group_by('artist_dj_name', 'tracklist_name_id').all()
     # MS SQL
-    # artist_tracklist_name = TracklistName.query.group_by().all()
-    artist_tracklist_name = TracklistName.query.with_entities(TracklistName.artist_dj_name).group_by(TracklistName.artist_dj_name).all()
+    # artist_tracklist_name = TracklistName.query.with_entities(TracklistName.artist_dj_name).group_by(TracklistName.artist_dj_name).all()
+    artist_tracklist_name = TracklistName.query.with_entities(TracklistName.artist_dj_name, TracklistName.tracklist_mix_name).group_by(TracklistName.artist_dj_name, TracklistName.tracklist_mix_name).all()
     return render_template('tracklists.html',
-                            artist_tracklist_name = artist_tracklist_name#,
-                            #djs_tracklists = tracklist_name_list
+                            artist_tracklist_name = artist_tracklist_name
                             )
 
-# @tracklists_blueprint.route('/tracklists')
-# def getDJsLists():
-#     tracklists_set = TracklistName.query.with_entities(TracklistName.artist_dj_name, TracklistName.tracklist_mix_name).group_by(TracklistName.artist_dj_name, TracklistName.tracklist_mix_name).all()
-#     tracklist_name_list = []
+# @tracklists_blueprint.route('/<string:artist_dj_name>')
+# def getDJsTrackLists(artist_dj_name):
+#     # tracklists_set = TracklistName.query.with_entities(TracklistName.artist_dj_name, TracklistName.tracklist_mix_name).group_by(TracklistName.artist_dj_name, TracklistName.tracklist_mix_name).all()
 
-#     for tracklists in tracklists_set:
-#         tracklist_name_list.append(tracklists.tracklist_mix_name)
+#     # tracklist_name_list = []
 
-@tracklists_blueprint.route('/<string:artist_dj_name>')
-def load_tracklist(artist_dj_name):
+#     # for tracklists in tracklists_set:
+#     #     tracklist_name_list.append(tracklists.tracklist_mix_name)
+#     djs_tracklists = TracklistName.query.filter_by(artist_dj_name = artist_dj_name).all()
+
+#     return render_template('tracklists.html',
+#                             djs_tracklists = djs_tracklists)
+
+@tracklists_blueprint.route('/tracklists')
+def load_tracklist():
     # MS SQL
-    # if not artist_dj_name:
-    #     tracklist_details = TracklistDetails.query.filter_by(artist_dj_name = artist_dj_name).all()
-
-    #     # td_list = []
-
-    #     # for item in tracklist_details:
-    #     #     td_list.append(item)
-
-    # else:
-    #     tracklist_details = TracklistName.query.with_entities(TracklistName.artist_dj_name, TracklistName.tracklist_mix_name).group_by(TracklistName.artist_dj_name, TracklistName.tracklist_mix_name).all()
-
-    # tracklists_set = TracklistName.query.with_entities(TracklistName.artist_dj_name, TracklistName.tracklist_mix_name, TracklistName.id).group_by(TracklistName.artist_dj_name, TracklistName.tracklist_mix_name, TracklistName.id).all()
-    # tracklist_name_list = ['tracklist_mix_name', id]
-
-    # for tracklists in tracklists_set:
-    #     tracklist_name_list.append(tracklists.tracklist_mix_name)
-    #     tracklist_name_list.append(tracklists.id)
-
-    # MS SQL
-    # artist_tracklist_name = TracklistName.query.group_by().all()
-    # artist_tracklist_name = TracklistName.query.with_entities(TracklistName.artist_dj_name).group_by(TracklistName.artist_dj_name).all()
-    # artist_tracklist_name = TracklistName.query.with_entities(TracklistName.artist_dj_name, TracklistName.tracklist_mix_name).group_by(TracklistName.artist_dj_name, TracklistName.tracklist_mix_name).all()
     artist_tracklist_name = TracklistName.query.with_entities(TracklistName.tracklist_mix_name).group_by(TracklistName.tracklist_mix_name).all()
+    # djs_tracklists = TracklistName.query.filter_by(artist_dj_name = artist_dj_name).all()
 
     return render_template('tracklists.html',
                             artist_tracklist_name = artist_tracklist_name#,
-                            #djs_tracklists = tracklist_name_list,
-                            #td_list = td_list
+                            #djs_tracklists = djs_tracklists
                             )
