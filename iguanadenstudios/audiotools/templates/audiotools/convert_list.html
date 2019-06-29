@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="apoth-jumbotron jumbotron">
+        <h1>Convert List Upload</h1>
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            <div class="form-group shadow-textarea">
+                {{ form.convert_upload_list.label(class="col-sm-2 col-form-label col-form-label-sm") }}
+                {{ form.convert_upload_list(class="apoth-form-control z-depth-1") }}
+            </div>
+            {{ form.submit(class="btn btn-primary") }}
+        </form>
+    </div>
+{% endblock content %}

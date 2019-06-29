@@ -45,6 +45,7 @@
                             <a class="nav-item nav-link" href="{{ url_for('mastering.mastering') }}">Mastering</a>
                             {% if current_user.is_authenticated %}
                                 <a class="nav-item nav-link" href="{{ url_for('upload.upload') }}">Upload</a>
+                                <a class="nav-item nav-link" href="{{ url_for('audiotools.convert_list') }}">Audio Tools</a>
                                 <a class="nav-item nav-link" href="{{ url_for('sign_in.logout') }}">Logout</a>
                             {% else %}
                                 <a class="nav-item nav-link" href="{{ url_for('register.register') }}">Register</a>

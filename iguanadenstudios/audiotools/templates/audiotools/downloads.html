@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="apoth-jumbotron jumbotron">
+        <h1>Downloads Page</h1>
+        <div class="container">
+            <div class="row no-gutters">
+                <div class="apoth-jumbotron jumbotron">
+                {% for download in splitlist %}
+                    <ul class="apoth-list-group apoth-list-group-flush">
+                        <li class="apoth-list-group-item">
+                            {{ download }}
+                            <div class="progress md-progress" style="height: 20px">
+                                <div class="progress-bar-animated" role="progressbar" style="width: 25%; height: 20px" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                            </div>
+                        </li>
+                    </ul>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

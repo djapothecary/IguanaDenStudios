@@ -37,6 +37,7 @@ login_manager.login_view = 'sign_in'
 # from iguanadenstudios.mastering.views.routes import mastering_blueprint
 
 from iguanadenstudios.about_us.routes import about_us_blueprint
+from iguanadenstudios.audiotools.routes import audiotools_blueprint
 from iguanadenstudios.tracklists.routes import tracklists_blueprint
 from iguanadenstudios.mastering.routes import mastering_blueprint
 from iguanadenstudios.register.routes import register_blueprint
@@ -49,6 +50,7 @@ from iguanadenstudios.error_pages.handlers import error_pages
 # /about_us/about_us
 # app.register_blueprint(about_us_blueprint, url_prefix = '/about_us')
 app.register_blueprint(about_us_blueprint)
+app.register_blueprint(audiotools_blueprint)
 app.register_blueprint(tracklists_blueprint)
 app.register_blueprint(mastering_blueprint)
 app.register_blueprint(register_blueprint)
