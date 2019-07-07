@@ -4,7 +4,8 @@ body {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  background-color: #212529;
+  /* background-color: #212529; */
+  background-color: #2e3131;
   text-align: left;
   color: #fff;
 }
@@ -19,7 +20,8 @@ ul {
 }
 
 .apoth-jumbotron {
-  background-color: #212529;
+  /* background-color: #212529; */
+  background-color: #2e3131;
 }
 
 .apoth-ids-brand {
@@ -230,7 +232,8 @@ select.apoth-form-control:focus::-ms-value {
   padding-bottom: 0.375rem;
   margin-bottom: 0;
   line-height: 1.5;
-  color: #212529;
+  /* color: #212529; */
+  color: #2e3131;
   background-color: transparent;
   border: solid transparent;
   border-width: 1px 0;

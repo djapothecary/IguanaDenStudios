@@ -6775,7 +6775,8 @@ a.btn:not([href]):not([tabindex]):hover {
   border: 0;
   background-color: transparent;
   font-size: 0.9rem;
-  color: #212529; }
+  /* color: #212529; } */
+  color: #2e3131; }
   .pagination .page-item .page-link:hover {
     -webkit-transition: all 0.3s linear;
     -o-transition: all 0.3s linear;
@@ -8309,7 +8310,9 @@ body.scrollable {
   background-image: linear-gradient(to top, #5ee7df 0%, #b490ca 100%); }
 
 .schedule-list .hr-bold {
-  border-top: 2px solid #212529; }
+  /* border-top: 2px solid #212529;  */
+  border-top: 2px solid #2e3131;
+}
 
 .schedule-list .font-smaller {
   font-size: .8rem; }
@@ -8404,7 +8407,8 @@ table.table td {
 
 table.table a {
   margin: 0;
-  color: #212529; }
+  /* color: #212529;  */
+  color: #2e3131; }
 
 table.table .label-table {
   margin: 0;
