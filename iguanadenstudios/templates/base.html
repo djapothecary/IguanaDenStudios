@@ -22,6 +22,8 @@
             <link rel="stlyesheet" type="text/css" media="screen" href="/static/css/mdb.css">
             <link rel="stlyesheet" type="text/css" media="screen" href="/static/css/style.css">
             <link rel="stylesheet" type="text/css" media="screen" href="/static/css/apothstyles.css">
+            <!-- Font Awesome -->
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
             <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,400i,500,500i,600&display=swap&subset=latin-ext">
         {% endblock styles %}
 
@@ -58,13 +60,15 @@
             </div>
         </header>
 
-        {% block content %}
+        <div class="container">
+            {% block content %}
 
-        {% endblock content %}
+            {% endblock content %}
 
-        {% block footer %}
-            {% include 'footer.html' %}
-        {% endblock footer %}
+            {% block footer %}
+                {% include 'footer.html' %}
+            {% endblock footer %}
+        </div>
         {% block scripts %}
             <script src="/static/js/jquery-3.3.1.js"></script>
             <script src="/static/js/util.js"></script>

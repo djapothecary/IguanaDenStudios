@@ -29,6 +29,217 @@ ul {
   height: 100px;
 }
 
+.apoth-btn {
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  padding: 0.84rem 2.14rem;
+  font-size: 0.81rem;
+  -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  -o-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  margin: 0.375rem;
+  border: 0;
+  -webkit-border-radius: 0.125rem;
+  border-radius: 0.125rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  white-space: normal;
+  word-wrap: break-word;
+  color: #fff;
+}
+
+.apoth-btn:hover, .apoth-btn:active, .apoth-btn:focus {
+  -webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+  outline: 0;
+}
+
+.apoth-btn:not([disabled]):not(.disabled):active, .apoth-btn:not([disabled]):not(.disabled).active {
+  -webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+}
+
+.apoth-btn .fas, .apoth-btn .fab, .apoth-btn .far {
+  position: relative;
+  font-size: 0.9rem;
+}
+
+  .apoth-btn .fas.right, .apoth-btn .fab.right, .apoth-btn .far.right {
+    margin-left: 0.3rem;
+  }
+
+  .apoth-btn .fas.left, .apoth-btn .fab.left, .apoth-btn .far.left {
+    margin-right: 0.3rem;
+  }
+
+.apoth-btn.apoth-btn-lg {
+  padding: 1rem 2.4rem;
+  font-size: 0.94rem;
+}
+
+.apoth-btn.apoth-btn-lg .fas, .apoth-btn.apoth-btn-lg .fab, .apoth-btn.apoth-btn-lg .far {
+  font-size: 1rem;
+}
+
+.apoth-btn.apoth-btn-md {
+  padding: 0.7rem 1.6rem;
+  font-size: 0.7rem;
+}
+
+.apoth-btn.apoth-btn-md .fas, .apoth-btn.apoth-btn-md .fab, .apoth-btn.apoth-btn-md .far {
+  font-size: 0.8rem;
+}
+
+.apoth-btn.apoth-btn-sm {
+  padding: 0.5rem 1.6rem;
+  font-size: 0.64rem;
+}
+.apoth-btn.apoth-btn-sm .fas, .apoth-btn.apoth-btn-sm .fab, .apoth-btn.apoth-btn-sm .far {
+  font-size: 0.7rem;
+}
+
+.apoth-btn.apoth-btn-tb {
+  padding: 0.3rem 1rem;
+}
+
+.apoth-btn.disabled:active, .apoth-btn.disabled:focus, .apoth-btn.disabled:hover, .apoth-btn:disabled:active, .apoth-btn:disabled:focus, .apoth-btn:disabled:hover {
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.apoth-btn.apoth-btn-block {
+  margin: inherit;
+}
+
+.apoth-btn.apoth-btn-link {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  background-color: transparent;
+}
+
+.apoth-btn.apoth-btn-link:active, .apoth-btn.apoth-btn-link:focus, .apoth-btn.apoth-btn-link:hover {
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  background-color: transparent;
+}
+
+.apoth-btn[class*="apoth-btn-outline-"] {
+  padding-top: 0.7rem;
+  padding-bottom: 0.7rem;
+}
+
+.apoth-btn[class*="apoth-btn-outline-"].apoth-btn-lg {
+  padding-top: 0.88rem;
+  padding-bottom: 0.88rem;
+}
+
+.apoth-btn[class*="apoth-btn-outline-"].apoth-btn-md {
+  padding-top: 0.58rem;
+  padding-bottom: 0.58rem;
+}
+
+.apoth-btn[class*="apoth-btn-outline-"].apoth-btn-sm {
+  padding-top: 0.38rem;
+  padding-bottom: 0.38rem;
+}
+
+.apoth-btn-group .apoth-btn {
+  margin: 0;
+}
+
+.apoth-btn .fa-lg,
+.apoth-btn-floating .fa-lg {
+  font-size: 1.33333em  !important;
+}
+
+.apoth-btn .fa-xs,
+.apoth-btn-floating .fa-xs {
+  font-size: .75em !important;
+}
+
+.apoth-btn .fa-sm,
+.apoth-btn-floating .fa-sm {
+  font-size: .875em !important;
+}
+
+.apoth-btn .fa-1x,
+.apoth-btn-floating .fa-1x {
+  font-size: 1em !important;
+}
+
+.apoth-btn .fa-2x,
+.apoth-btn-floating .fa-2x {
+  font-size: 2em !important;
+}
+
+.apoth-btn .fa-3x,
+.apoth-btn-floating .fa-3x {
+  font-size: 3em !important;
+}
+
+.apoth-btn .fa-4x,
+.apoth-btn-floating .fa-4x {
+  font-size: 4em !important;
+}
+
+.apoth-btn .fa-5x,
+.apoth-btn-floating .fa-5x {
+  font-size: 5em !important;
+}
+
+.apoth-btn .fa-6x,
+.apoth-btn-floating .fa-6x {
+  font-size: 6em !important;
+}
+
+.apoth-btn .fa-7x,
+.apoth-btn-floating .fa-7x {
+  font-size: 7em !important;
+}
+
+.apoth-btn .fa-8x,
+.apoth-btn-floating .fa-8x {
+  font-size: 8em !important;
+}
+
+.apoth-btn .fa-9x,
+.apoth-btn-floating .fa-9x {
+  font-size: 9em !important;
+}
+
+.apoth-btn .fa-10x,
+.apoth-btn-floating .fa-10x {
+  font-size: 10em !important;
+}
+
+.apoth-btn-outline-unique {
+  border: 2px solid #880e4f !important;
+  background-color: transparent !important;
+  color: #880e4f !important;
+}
+
+.apoth-btn-outline-unique:hover, .apoth-btn-outline-unique:focus, .apoth-btn-outline-unique:active, .apoth-btn-outline-unique:active:focus, .apoth-btn-outline-unique.active {
+  border-color: #880e4f !important;
+  background-color: transparent !important;
+  color: #880e4f !important;
+}
+
+.apoth-btn-outline-unique:not([disabled]):not(.disabled):active, .apoth-btn-outline-unique:not([disabled]):not(.disabled).active,
+.show > .apoth-btn-outline-unique.dropdown-toggle {
+  -webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+  background-color: transparent !important;
+  border-color: #880e4f !important;
+}
+
+.apoth-btn-outline-unique:not([disabled]):not(.disabled):active:focus, .apoth-btn-outline-unique:not([disabled]):not(.disabled).active:focus,
+.show > .apoth-btn-outline-unique.dropdown-toggle:focus {
+  -webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+}
+
 .apoth-offset-md-1 {
   margin-left: 2%;
 }
@@ -155,20 +366,6 @@ ul {
 
 .card-header + .apoth-list-group .apoth-list-group-item:first-child {
   border-top: 0;
-}
-
-
-
-@media (min-width: 768px) {
-  .apoth-offset-md-1 {
-    margin-left: 2%;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .apoth-form-control {
-    transition: none;
-  }
 }
 
 .apoth-form-control::-ms-expand {
@@ -298,4 +495,23 @@ select.apoth-form-control[size], select.apoth-form-control[multiple] {
 .input-group > .custom-select:focus,
 .input-group > .custom-file .custom-file-input:focus ~ .custom-file-label {
   z-index: 3;
+}
+
+/* MEDIA QUERIES */
+@media (min-width: 576px) {
+  .apoth-jumbotron {
+    padding: 4rem 2rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .apoth-offset-md-1 {
+    margin-left: 2%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .apoth-form-control {
+    transition: none;
+  }
 }
