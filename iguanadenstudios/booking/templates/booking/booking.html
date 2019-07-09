@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+    <h1>Booking</h1>
+        <div class="apoth-jumbotron jumbotron">
+            <form methods='POST'>
+                {{ form.hidden_tag() }}
+                <div class="form-group row">
+                    {{ form.contact_name.label(class="col-sm-2 col-form-label col-form-label-sm") }}
+                    <div class="col-sm-5">
+                        {{ form.contact_name(class="form-control form-control-sm") }}
+                    </div>
+                </div>
+                <br>
+                <div class="form-group row">
+                    {{ form.contact_phone.label(class="col-sm-2 col-form-label col-form-label-sm") }}
+                    <div class="col-sm-5">
+                        {{ form.contact_phone(class="form-control form-control-sm") }}
+                    </div>
+                </div>
+                <br>
+                <div class="form-group row">
+                    {{ form.company_label.label(class="col-sm-2 col-form-label col-form-label-sm") }}
+                    <div class="col-sm-5">
+                        {{ form.company_label(class="form-control form-control-sm") }}
+                    </div>
+                </div>
+                <br>
+                <div class="form-group row">
+                    {{ form.artist_band.label(class="col-sm-2 col-form-label col-form-label-sm") }}
+                    <div class="col-sm-5">
+                        {{ form.artist_band(class="form-control form-control-sm") }}
+                    </div>
+                </div>
+                <br>
+                <div class="form-group row">
+                    {{ form.email_address.label(class="col-sm-2 col-form-label col-form-label-sm") }}
+                    <div class="col-sm-5">
+                        {{ form.email_address(class="form-control form-control-sm") }}
+                    </div>
+                </div>
+                <br>
+                <div class="form-group row">
+                    {{ form.address_1.label(class="col-sm-2 col-form-label col-form-label-sm") }}
+                    <div class="col-sm-5">
+                        {{ form.address_1(class="form-control form-control-sm") }}
+                    </div>
+                </div>
+                <br>
+                <div class="form-group row">
+                    {{ form.address_2.label(class="col-sm-2 col-form-label col-form-label-sm") }}
+                    <div class="col-sm-5">
+                        {{ form.address_2(class="form-control form-control-sm") }}
+                    </div>
+                </div>
+                <br>
+                <div class="form-group row">
+                    {{ form.address_city.label(class="col-sm-2 col-form-label col-form-label-sm") }}
+                    <div class="col-sm-5">
+                        {{ form.address_city(class="form-control form-control-sm") }}
+                    </div>
+                </div>
+                <br>
+                <div class="form-group row">
+                    {{ form.address_state.label(class="col-sm-2 col-form-label col-form-label-sm") }}
+                    <div class="col-sm-5">
+                        {{ form.address_state(class="form-control form-control-sm") }}
+                    </div>
+                </div>
+                <br>
+                <div class="form-group row">
+                    {{ form.address_postal_code.label(class="col-sm-2 col-form-label col-form-label-sm") }}
+                    <div class="col-sm-5">
+                        {{ form.address_postal_code(class="form-control form-control-sm") }}
+                    </div>
+                </div>
+                <br>
+                <div class="form-group row">
+                    {{ form.address_country.label(class="col-sm-2 col-form-label col-form-label-sm") }}
+                    <div class="col-sm-5">
+                        {{ form.address_country(class="form-control form-control-sm") }}
+                    </div>
+                </div>
+                <br>
+                <div class="form-group row">
+                    {{ form.additional_comments.label(class="col-sm-2 col-form-label col-form-label-sm") }}
+                    <div class="col-sm-5">
+                        {{ form.additional_comments(class="form-control form-control-sm") }}
+                    </div>
+                </div>
+                {{ form.submit(class="btn btn-primary") }}
+            </form>
+        </div>
+    </div>
+{% endblock content %}

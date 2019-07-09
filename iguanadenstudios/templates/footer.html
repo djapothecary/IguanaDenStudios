@@ -1,26 +1,21 @@
 {% block footer %}
 
+    <hr class="w-100 clearfix d-sm-none">
     <!-- Footer -->
-<footer class="page-footer font-small blue pt-4">
-    <!-- Footer Links -->
-    <div class="container-fluid text-center text-md-left">
-        <!-- Grid row -->
-        <div class="row">
-            <!-- Grid column -->
-            <div class="col-md-6 mt-md-0 mt-3">
-                <h5 class="text-uppercase">Footer Content</h5>
-                <p>Here you can use rows and columns here to organize your footer content.</p>
-            </div>
-        </div>
-        <br>
-        <div class="container-fluid text-center text-md-left">
+    <footer class="page-footer text-center text-md-left mt-4 pt-4 apoth-background-fix">
+        <div class="container">
+            <!-- Grid row -->
             <div class="row">
                 <!-- Grid column -->
-                <hr class="clearfix w-100 d-md-none pb-3">
-                <!-- Grid column -->
-                <div class="col-md-8 mb-md-0 mb-3 text-center">
+                <div class="col-lg-3 col-md-6 ml-auto">
+                    <h5 class="title mb-3 text-uppercase">Footer Content</h5>
+                    <p>Here you can use rows and columns here to organize your footer content.</p>
+                </div>
+                <hr class="w-100 clearfix d-sm-none">
+                <div class="col-lg-3 col-md-6 ml-auto mb-4 text-center">
+                    <!-- Grid column -->
                     <!-- Links -->
-                    <h5 class="text-uppercase">Links</h5>
+                    <h5 class="title mb-3">Links</h5>
                     <ul class="list-unstyled">
                         <li>
                             <a class="nav-item nav-link active" href="{{ url_for('index') }}">Home <span class="sr-only">(current)</span></a>
@@ -34,8 +29,8 @@
                     </ul>
                 </div>
                 <!-- Grid column -->
-                <!-- Grid column -->
-                <div class="col-md-3 mb-md-0 mb-3">
+                <hr class="w-100 clearfix d-sm-none">
+                <div class="col-lg-3 col-md-6 ml-auto mb-4 text-center">
                     <!-- Links -->
                     <h5 class="text-uppercase">Links</h5>
                     <ul class="list-unstyled">
@@ -56,18 +51,33 @@
                         {% endif %}
                     </ul>
                 </div>
-                <!-- Grid column -->
             </div>
-        <!-- Grid row -->
+            <!-- Grid row -->
         </div>
-    </div>
-    <!-- Footer Links -->
-    <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">© 2019 Copyright:
-        <a href="#">IguanaDenStudios.com</a>
-    </div>
-    <!-- Copyright -->
-</footer>
-<!-- Footer -->
+        <!-- Footer Links -->
+        <!--Call to action-->
+        <hr class="w-100 clearfix d-sm-none">
+        <div class="call-to-action text-center my-4">
+            <h4 class="mb-4">Material Design for Bootstrap</h4>
+            <h5 class="mb-4">Get our UI KIT for free</h5>
+            <ul class="list-unstyled list-inline">
+                <li class="list-inline-item">
+                    <a target="_blank" href="https://mdbootstrap.com/getting-started/" class="btn btn-primary waves-effect waves-light"
+                    rel="nofollow">Sign up!</a>
+                </li>
+                <li class="list-inline-item">
+                    <a target="_blank" href="https://mdbootstrap.com/material-design-for-bootstrap/" class="btn btn-info waves-effect waves-light"
+                    rel="nofollow">Learn more</a>
+                </li>
+            </ul>
+        </div>
+        <!--/.Call to action-->
+        <!-- Copyright -->
+        <div class="footer-copyright text-center py-3">© 2019 Copyright:
+            <a href="#">IguanaDenStudios.com</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
 
 {% endblock footer %}
