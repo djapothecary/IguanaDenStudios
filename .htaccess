@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ /wwwroot/Apoth/public_html/iguanadenstudios/cgi-bin/iguanadenstudios.cgi/$1 [L]
