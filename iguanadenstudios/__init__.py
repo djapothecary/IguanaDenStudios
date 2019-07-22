@@ -4,20 +4,36 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
+from configparser import ConfigParser
+from crypto import crypt
 
 login_manager = LoginManager()
 
 app = Flask(__name__)
 
-# TODO: store this in a config file
-app.config['SECRET_KEY'] = 'iguanadenstudios'
+# build the parser
+parser = ConfigParser()
+parser.read('dev.ini')
+
+# build the 'crypter'
+crypter = crypt.Crypt()
+crypt_key = 'MyKey4TestingYnP'
+
+SECRET_KEY = crypter.decrypt(parser.get('settings', 'secret_key'), crypt_key)
+DRIVER = crypter.decrypt(parser.get('sqldatabase', 'driver'), crypt_key)
+SERVER = crypter.decrypt(parser.get('sqldatabase', 'server'), crypt_key)
+DATABASE = crypter.decrypt(parser.get('sqldatabase', 'database'), crypt_key)
+UID = crypter.decrypt(parser.get('sqldatabase', 'uid'), crypt_key)
+PWD = crypter.decrypt(parser.get('sqldatabase', 'pwd'), crypt_key)
+app.config['SECRET_KEY'] = SECRET_KEY
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'data.sqlite')
 # app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 #   using MS SQL Server
-params = urllib.parse.quote_plus('DRIVER={SQL Server};SERVER=184.168.47.10;DATABASE=IguanaDenStudios;UID=Apoth;PWD=$6qul62H;')
+params = urllib.parse.quote_plus('DRIVER={'+ DRIVER +'};SERVER='+ SERVER +';DATABASE=' + DATABASE +';UID=' + UID +';PWD='+ PWD +';')
+# params = urllib.parse.quote_plus('DRIVER={SQL Server};SERVER=184.168.47.10;DATABASE=IguanaDenStudios;UID=Apoth;PWD=$6qul62H;')
 app.config['SQLALCHEMY_DATABASE_URI'] = "mssql+pyodbc:///?odbc_connect=%s" % params
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
