@@ -1,0 +1,75 @@
+/*
+    These hex values are none 0fficial approximate values intended to simulate
+    Crayola colors in HTML
+    http://www.w3schools.com/colors/colors_crayola.asp
+*/
+
+.radical-red {
+    color: #ff355e;
+}
+
+.wild-watermelon {
+    color: #fd5b78;
+}
+
+.outrageous-orange {
+    color: #ff6037;
+}
+
+.atomic-tangerine {
+    color: #ff9966;
+}
+
+.neon-carrot {
+    color: #ff9933;
+}
+
+.sunglow {
+    color: #ffcc33;
+}
+
+.laser-lemon {
+    color: #ffff66;
+}
+
+/*
+*   duplicates laser-lemon
+*/
+.unmellow-yellow {
+    color: #ffff66;
+}
+
+.electric-lime {
+    color: #ccff00;
+}
+
+.screamin-green {
+    color: #66ff66;
+}
+
+.magic-mint {
+    color: #aaf0d1;
+}
+
+.blizzard-blue {
+    color: #50bfe6;
+}
+
+.shocking-pink {
+    color: #ff6eff;
+}
+
+.razzle-dazzle-rose {
+    color: #ee34d2;
+}
+
+.hot-magenta {
+    color: #ff00cc;
+}
+
+/*
+*   duplicates hot-magenta
+*/
+.purple-pizzazz {
+    color: #ff00cc;
+}
