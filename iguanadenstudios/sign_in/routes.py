@@ -1,7 +1,6 @@
 from flask import (Blueprint, render_template, redirect,
                     url_for, flash, abort, request)
 from flask_login import login_user, login_required, logout_user
-from iguanadenstudios import app, db
 from iguanadenstudios.register.models.register import User
 from iguanadenstudios.sign_in.forms import LoginForm
 

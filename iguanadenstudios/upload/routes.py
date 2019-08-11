@@ -1,7 +1,7 @@
 from flask import (Blueprint, render_template, redirect, request,
                     url_for, flash, abort)
 from flask_login import login_user, login_required, logout_user
-from iguanadenstudios import app, db
+from iguanadenstudios import db
 from iguanadenstudios.upload.forms import UploadForm
 from iguanadenstudios.upload.models.upload import (TracklistName,
                                             TracklistDetails)

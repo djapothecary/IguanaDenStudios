@@ -1,5 +1,15 @@
-from iguanadenstudios import app
+import os
+# from iguanadenstudios import app, create_app, db
+from iguanadenstudios import create_app, db
 from flask import render_template, url_for
+from flask_migrate import Migrate
+
+app = create_app('dev')
+migrate = Migrate(app, db)
+
+@app.shell_context_processor
+def make_shell_context():
+    return dict(db = db, User = User, Role = Role)
 
 @app.route('/')
 def index():

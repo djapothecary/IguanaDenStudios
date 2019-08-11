@@ -1,7 +1,6 @@
 from flask import (Blueprint, render_template, redirect, request,
                     url_for, flash, abort)
 from flask_login import login_user, login_required, logout_user
-from iguanadenstudios import app, db
 from iguanadenstudios.audiotools.forms import ATConvertListForm
 # no model added to database,so not imported (yet)
 
