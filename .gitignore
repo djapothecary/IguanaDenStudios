@@ -3,4 +3,5 @@ __pycache__
 *.pyc
 /.vs
 /.vscode/.vscode
+/.vscode
 create_config.py
