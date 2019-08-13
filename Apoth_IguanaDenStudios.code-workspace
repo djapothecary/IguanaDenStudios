@@ -132,7 +132,7 @@
 		"debug.console.lineHeight": 0,
 		"debug.console.wordWrap": true,
 		"debug.enableAllHovers": false,
-		"debug.inlineValues": false,
+		"debug.inlineValues": true,
 		"debug.internalConsoleOptions": "openOnFirstSessionStart",
 		"debug.node.autoAttach": "off",
 		"debug.node.showUseWslIsDeprecatedWarning": true,
@@ -156,7 +156,7 @@
 		"django.snippets.use": true,
 
 		//  djangointellisense
-		"djangointellisense.debugMessages": false,
+		"djangointellisense.debugMessages": true,
 		"djangointellisense.projectRoot": "${path}",
 		"djangointellisense.settingsModule": "",
 
@@ -1048,7 +1048,8 @@
 
 		// launch
 		"launch": {
-			"configurations": [],
+			"configurations": [
+			],
 			"compounds": []
 		},
 
@@ -1281,7 +1282,7 @@
 		],
 		"python.linting.pep8CategorySeverity.E": "Information",
 		"python.linting.pep8CategorySeverity.W": "Information",
-		"python.linting.pep8Enabled": false,
+		"python.linting.pep8Enabled": true,
 		"python.linting.pep8Path": "pep8",
 		"python.linting.prospectorArgs": [
 
@@ -1322,7 +1323,7 @@
 
 		//    python.terminal
 		"python.terminal.activateEnvironment": true,
-		"python.terminal.executeInFileDir": false,
+		"python.terminal.executeInFileDir": true,
 		"python.terminal.launchArgs": [
 
 		],

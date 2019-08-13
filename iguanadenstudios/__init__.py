@@ -7,7 +7,7 @@ from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
-from iguanadenstudios.config import Config
+from iguanadenstudios.config import Config, config
 from configparser import ConfigParser
 from crypto import crypt
 
@@ -20,20 +20,17 @@ db = SQLAlchemy()
 def create_app(config_name):
     app = Flask(__name__)
 
-    # build the parser
-    parser = ConfigParser()
-    parser.read('dev.ini')
-
-    # build the 'crypter'
-    crypter = crypt.Crypt()
-    crypt_key = 'MyKey4TestingYnP'
-    SECRET_KEY = Config.SECRET_KEY
+    app.config['SECRET_KEY'] = Config.SECRET_KEY
+    app.config['CONFIG_NAME'] = config_name
 
     #load the appropriate configuration
     if config_name == 'dev' or 'test':
+        app.config['ENV'] = 'development'
+        app.config['TESTING'] = True
+        app.config['DEBUG'] = True
         SQLITEDB = Config.SQLITEDB
         app.config['SQLALCHEMY_DATABASE_URI'] = SQLITEDB
-        app.config['SECRET_KEY'] = SECRET_KEY
+        app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     elif config_name == 'prod':
         DRIVER = Config.DRIVER
         SERVER = Config.SERVER
@@ -43,15 +40,14 @@ def create_app(config_name):
         params = urllib.parse.quote_plus('DRIVER={'+ DRIVER +'};SERVER='+ SERVER +';DATABASE=' + DATABASE +';UID=' + UID +';PWD='+ PWD +';')
         app.config['SQLALCHEMY_DATABASE_URI'] = "mssql+pyodbc:///?odbc_connect=%s" % params
         app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-        app.config['SECRET_KEY'] = SECRET_KEY
+        app.config['ENV'] = 'production'
+        app.config['TESTING'] = False
     else:
         SQLITEDB = Config.SQLITEDB
         app.config['SQLALCHEMY_DATABASE_URI'] = SQLITEDB
-        app.config['SECRET_KEY'] = SECRET_KEY
 
-    import pdb; pdb.set_trace()
-    # app.config.from_object(config[config_name])
-    # config[config_name].init_app(app)
+    app.config.from_object(config[config_name])
+    config[config_name].init_app(app)
 
     # bootstrap.init_app(app)
     # mail.init_app(app)

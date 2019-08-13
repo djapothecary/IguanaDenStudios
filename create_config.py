@@ -27,8 +27,6 @@ MAIL_SENDER = crypter.encrypt('Iguana Den Studios <heydj@djapothecary.com>', cry
 
 #TODO:  add godaddy specific configs
 
-
-
 config = ConfigParser()
 
 config['settings'] = {
