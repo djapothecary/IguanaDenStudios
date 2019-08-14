@@ -13,6 +13,11 @@
                 {% include 'sidenav.html' %}
             {% endwith %}
         </div>
+        <div class="col no-gutters">
+            {% with td_list = td_list %}
+                {% include 'listdisplay.html' %}
+            {% endwith %}
+        </div>
     </div>
     <div class="row no-gutters">
         {% with djs_tracklists = djs_tracklists %}

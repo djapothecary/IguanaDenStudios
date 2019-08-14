@@ -8,34 +8,22 @@ tracklists_blueprint = Blueprint('tracklists', __name__,
 
 @tracklists_blueprint.route('/tracklists')
 def tracklists():
-    #artist_tracklist_name = TracklistName.query.group_by('artist_dj_name', 'tracklist_name_id').all()
+    import pdb; pdb.set_trace()
     # MS SQL
-    # artist_tracklist_name = TracklistName.query.with_entities(TracklistName.artist_dj_name).group_by(TracklistName.artist_dj_name).all()
     artist_tracklist_name = TracklistName.query.with_entities(TracklistName.artist_dj_name, TracklistName.tracklist_mix_name).group_by(TracklistName.artist_dj_name, TracklistName.tracklist_mix_name).all()
     return render_template('tracklists.html',
                             artist_tracklist_name = artist_tracklist_name
                             )
 
-# @tracklists_blueprint.route('/<string:artist_dj_name>')
-# def getDJsTrackLists(artist_dj_name):
-#     # tracklists_set = TracklistName.query.with_entities(TracklistName.artist_dj_name, TracklistName.tracklist_mix_name).group_by(TracklistName.artist_dj_name, TracklistName.tracklist_mix_name).all()
-
-#     # tracklist_name_list = []
-
-#     # for tracklists in tracklists_set:
-#     #     tracklist_name_list.append(tracklists.tracklist_mix_name)
-#     djs_tracklists = TracklistName.query.filter_by(artist_dj_name = artist_dj_name).all()
-
-#     return render_template('tracklists.html',
-#                             djs_tracklists = djs_tracklists)
-
-@tracklists_blueprint.route('/tracklists')
-def load_tracklist():
+@tracklists_blueprint.route('/tracklists/<string:artist_dj_name>')
+def load_tracklist(artist_dj_name = '', tracklist_mix_name = ''):
+    import pdb; pdb.set_trace()
     # MS SQL
-    artist_tracklist_name = TracklistName.query.with_entities(TracklistName.tracklist_mix_name).group_by(TracklistName.tracklist_mix_name).all()
-    # djs_tracklists = TracklistName.query.filter_by(artist_dj_name = artist_dj_name).all()
+    artist_tracklist_name = TracklistName.query.with_entities(TracklistName.artist_dj_name, TracklistName.tracklist_mix_name).group_by(TracklistName.artist_dj_name, TracklistName.tracklist_mix_name).all()
+    td_list = TracklistDetails.query.with_entities(TracklistDetails.track_artist, TracklistDetails.track_title).join(TracklistName).filter_by(artist_dj_name = artist_dj_name).all()
+
 
     return render_template('tracklists.html',
-                            artist_tracklist_name = artist_tracklist_name#,
-                            #djs_tracklists = djs_tracklists
+                            artist_tracklist_name = artist_tracklist_name,
+                            td_list = td_list
                             )
