@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container">
 <div class="apoth-jumbotron jumbotron">
     <h1>Tracklists Page</h1>
 </div>
@@ -13,13 +12,12 @@
                 {% include 'sidenav.html' %}
             {% endwith %}
         </div>
+        <div class="col no-gutters">
+            {% with td_list = td_list %}
+                {% include 'listdisplay.html' %}
+            {% endwith %}
+        </div>
     </div>
-    <div class="row no-gutters">
-        {% with djs_tracklists = djs_tracklists %}
-            {% include 'djs_tracklists.html' %}
-        {% endwith %}
-    </div>
-</div>
 </div>
 
 {% endblock content %}

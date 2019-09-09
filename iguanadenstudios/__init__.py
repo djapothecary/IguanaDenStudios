@@ -1,77 +1,90 @@
 import os
 import urllib
-from flask import Flask
+from flask import Flask, render_template
+# from flask_bootstrap import Bootstrap
+# from flask_mail import Mail
+# from flask_moment import Moment
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
+from iguanadenstudios.config import Config, config
 from configparser import ConfigParser
 from crypto import crypt
 
 login_manager = LoginManager()
+#TODO:  may not need this one because of static and mdb bootstrap files
+# bootstrap = Bootstrap()
+# mail = Mail()
+# moment = Moment()
+db = SQLAlchemy()
+def create_app(config_name):
+    app = Flask(__name__)
 
-app = Flask(__name__)
+    app.config['SECRET_KEY'] = Config.SECRET_KEY
+    app.config['CONFIG_NAME'] = config_name
 
-# build the parser
-parser = ConfigParser()
-parser.read('dev.ini')
+    #load the appropriate configuration
+    if config_name == 'dev' or 'test':
+        app.config['ENV'] = 'development'
+        app.config['TESTING'] = True
+        app.config['DEBUG'] = True
+        SQLITEDB = Config.SQLITEDB
+        app.config['SQLALCHEMY_DATABASE_URI'] = SQLITEDB
+        app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    elif config_name == 'prod':
+        DRIVER = Config.DRIVER
+        SERVER = Config.SERVER
+        DATABASE = Config.DATABASE
+        UID = Config.UID
+        PWD = Config.PWD
+        params = urllib.parse.quote_plus('DRIVER={'+ DRIVER +'};SERVER='+ SERVER +';DATABASE=' + DATABASE +';UID=' + UID +';PWD='+ PWD +';')
+        app.config['SQLALCHEMY_DATABASE_URI'] = "mssql+pyodbc:///?odbc_connect=%s" % params
+        app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+        app.config['ENV'] = 'production'
+        app.config['TESTING'] = False
+    else:
+        SQLITEDB = Config.SQLITEDB
+        app.config['SQLALCHEMY_DATABASE_URI'] = SQLITEDB
 
-# build the 'crypter'
-crypter = crypt.Crypt()
-crypt_key = 'MyKey4TestingYnP'
+    app.config.from_object(config[config_name])
+    config[config_name].init_app(app)
 
-SECRET_KEY = crypter.decrypt(parser.get('settings', 'secret_key'), crypt_key)
-DRIVER = crypter.decrypt(parser.get('sqldatabase', 'driver'), crypt_key)
-SERVER = crypter.decrypt(parser.get('sqldatabase', 'server'), crypt_key)
-DATABASE = crypter.decrypt(parser.get('sqldatabase', 'database'), crypt_key)
-UID = crypter.decrypt(parser.get('sqldatabase', 'uid'), crypt_key)
-PWD = crypter.decrypt(parser.get('sqldatabase', 'pwd'), crypt_key)
-app.config['SECRET_KEY'] = SECRET_KEY
+    # bootstrap.init_app(app)
+    # mail.init_app(app)
+    # moment.init_app(app)
 
-basedir = os.path.abspath(os.path.dirname(__file__))
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'data.sqlite')
-# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    db = SQLAlchemy(app)
+    #Migrate(app, db)
 
-#   using MS SQL Server
-params = urllib.parse.quote_plus('DRIVER={'+ DRIVER +'};SERVER='+ SERVER +';DATABASE=' + DATABASE +';UID=' + UID +';PWD='+ PWD +';')
-# params = urllib.parse.quote_plus('DRIVER={SQL Server};SERVER=184.168.47.10;DATABASE=IguanaDenStudios;UID=Apoth;PWD=$6qul62H;')
-app.config['SQLALCHEMY_DATABASE_URI'] = "mssql+pyodbc:///?odbc_connect=%s" % params
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    db.init_app(app)
 
-db = SQLAlchemy(app)
-Migrate(app, db)
+    # initialize login manager
+    login_manager.init_app(app)
+    # tell login manager what the HTML view is
+    login_manager.login_view = 'sign_in'
 
-# initialize login manager
-login_manager.init_app(app)
-# tell login manage what the HTML view is
-login_manager.login_view = 'sign_in'
+    from iguanadenstudios.about_us.routes import about_us_blueprint
+    from iguanadenstudios.audiotools.routes import audiotools_blueprint
+    from iguanadenstudios.booking.routes import booking_blueprint
+    from iguanadenstudios.tracklists.routes import tracklists_blueprint
+    from iguanadenstudios.mastering.routes import mastering_blueprint
+    from iguanadenstudios.register.routes import register_blueprint
+    from iguanadenstudios.sign_in.routes import sign_in_blueprint
+    from iguanadenstudios.upload.routes import upload_blueprint
+    from iguanadenstudios.error_pages.handlers import error_pages
 
-# register blueprints after database is created
-# apparently blueprints/routes can't live in a sub folder...!!!!
-# from iguanadenstudios.home.views.routes import home_blueprint
-# from iguanadenstudios.about_us.views.routes import about_us_blueprint
-# from iguanadenstudios.tracklists.views.routes import tracklists_blueprint
-# from iguanadenstudios.mastering.views.routes import mastering_blueprint
+    # register blueprints
+    # using url_prefix allows the changing of how the url displays.  the below example produces:
+    # /about_us/about_us
+    # app.register_blueprint(about_us_blueprint, url_prefix = '/about_us')
+    app.register_blueprint(about_us_blueprint)
+    app.register_blueprint(audiotools_blueprint)
+    app.register_blueprint(booking_blueprint)
+    app.register_blueprint(tracklists_blueprint)
+    app.register_blueprint(mastering_blueprint)
+    app.register_blueprint(register_blueprint)
+    app.register_blueprint(sign_in_blueprint)
+    app.register_blueprint(upload_blueprint)
+    app.register_blueprint(error_pages)
 
-from iguanadenstudios.about_us.routes import about_us_blueprint
-from iguanadenstudios.audiotools.routes import audiotools_blueprint
-from iguanadenstudios.booking.routes import booking_blueprint
-from iguanadenstudios.tracklists.routes import tracklists_blueprint
-from iguanadenstudios.mastering.routes import mastering_blueprint
-from iguanadenstudios.register.routes import register_blueprint
-from iguanadenstudios.sign_in.routes import sign_in_blueprint
-from iguanadenstudios.upload.routes import upload_blueprint
-from iguanadenstudios.error_pages.handlers import error_pages
-
-# register blueprints
-# using url_prefix allows the changing of how the url displays.  the below example produces:
-# /about_us/about_us
-# app.register_blueprint(about_us_blueprint, url_prefix = '/about_us')
-app.register_blueprint(about_us_blueprint)
-app.register_blueprint(audiotools_blueprint)
-app.register_blueprint(booking_blueprint)
-app.register_blueprint(tracklists_blueprint)
-app.register_blueprint(mastering_blueprint)
-app.register_blueprint(register_blueprint)
-app.register_blueprint(sign_in_blueprint)
-app.register_blueprint(upload_blueprint)
-app.register_blueprint(error_pages)
+    return app

@@ -1,7 +1,7 @@
 from flask import (Blueprint, render_template, redirect,
                     url_for, flash, abort)
 from flask_login import login_user, login_required, logout_user
-from iguanadenstudios import app, db
+from iguanadenstudios import db
 from iguanadenstudios.register.models.register import User
 # way to fix 'module' is not callable error
 # from iguanadenstudios.register.forms.RegistrationForm import RegistrationForm
