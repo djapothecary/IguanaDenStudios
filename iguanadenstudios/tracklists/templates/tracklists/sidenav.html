@@ -2,7 +2,7 @@
 
     <div class="container">
         <div class="row no-gutters">
-            <div class="col-md-8">
+            <div class="col">
                 {% for artist in artist_tracklist_name %}
                 <div class="list-group list-group-flush">
                     <button type="button" class="list-group-item list-group-item-action active"
@@ -13,7 +13,7 @@
                     </button>
                 </div>
                 <div class="row no-gutters">
-                    <div class="col-md-8 apoth-offset-md-1">
+                    <div class="apoth-offset-md-5">
                         <div class="list-group list-group-flush" class="list-group-item list-group-item-action"
                                 data-toggle="collapse" data-target="#{{ artist[0]|replace(' ', '_') }}"
                                 aria-expanded="false" aria-controls="{{ artist[0]|replace(' ', '_') }}">
@@ -27,11 +27,13 @@
                                     </a>
                                 </div>
                             {% else %}
+                                {% for tracklist in artist[1] %}
                                 <div class="collapse list-group-item list-group-item-action" id="{{ artist[0]|replace(' ', '_') }}">
-                                    <a href="{{ url_for('tracklists.load_tracklist', artist_dj_name = artist[0]) }}">
-                                        {{ artist[1] }}
+                                    <a href="{{ url_for('tracklists.load_tracklist', artist_dj_name = artist[0], tracklist_mix_name = tracklist) }}">
+                                        {{ tracklist }}
                                     </a>
                                 </div>
+                                {% endfor %}
                             {% endif %}
                         </div>
                     </div>
