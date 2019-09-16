@@ -1,8 +1,6 @@
 {
     "python.linting.pylintEnabled": true,
-    "python.pythonPath": "C:\\Users\\djapo\\Anaconda3\\envs\\myflaskenv\\python.exe"
-    //"python.pythonPath": "C:\\Users\\djapo\\Anaconda3\\envs\\myflaskenv\\python.exe",
-    "python.pythonPath": "C:\\Users\\djapo\\Anaconda3\\python.exe",
+    "python.pythonPath": "C:\\ProgramData\\Anaconda3\\python.exe",
     "python.linting.pep8Enabled": false,
     "python.linting.enabled": true
 }

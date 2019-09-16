@@ -46,7 +46,9 @@ migrate = Migrate(app, db)
 
 @app.before_first_request
 def create_tables():
+    import pdb; pdb.set_trace()
     if app.config['ENV'] =='development':
+        import pdb; pdb.set_trace()
         db.create_all()
 
 
