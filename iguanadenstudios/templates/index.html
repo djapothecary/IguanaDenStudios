@@ -12,28 +12,28 @@
                 <div class="apoth-jumbotron">
                     <div class="apoth-like-h2">
                         <span>
-                            Material Design for Bootstrap
+                            A mastering studio specifically for DJs
                         </span>
                     </div>
                     <br>
                     <div class="apoth-like-p">
                         <span>
-                            Powerful and free Material Design UI KIT
+                            Bring your sets to the next level
                         </span>
                     </div>
                     <br>
                     <div class="apoth-like-p">
                         <span>
-                            Register for free and get access to amazing framework and beautiful components
+                            Register for free to share a tracklist or learn more about our mastering program
                         </span>
                     </div>
                     <div class="apoth-justify-content-center">
                     <br>
-                        <a target="_blank" href="https://mdbootstrap.com/getting-started/" class="apoth-btn apoth-btn-outline-unique" rel="nofollow">Download
+                        <a href="{{ url_for('register.register') }}" class="apoth-btn apoth-btn-outline-unique" rel="nofollow">Register
                             <i class="fas fa-download right"></i></a>
                         <!-- <a target="_blank" href="https://mdbootstrap.com/getting-started/" class="apoth-btn apoth-btn-outline-unique" rel="nofollow">Download
                         <i class="fas fa-download right"></i></a> -->
-                        <a target="_blank" href="https://mdbootstrap.com/material-design-for-bootstrap/" class="apoth-btn apoth-btn-unique btn-ptc"
+                        <a href="{{ url_for('mastering.mastering') }}" class="apoth-btn apoth-btn-unique btn-ptc"
                             rel="nofollow">Learn more <i class="fas fa-book right"></i></a>
                     </div>
                 </div>
@@ -57,11 +57,11 @@
             <!--Card content-->
             <div class="card-body">
                 <!--Title-->
-                <h4 class="card-title">This is title</h4>
+                <h4 class="card-title">Tracklists</h4>
                 <!--Text-->
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.</p>
-                <a href="#" class="btn btn-info">Read more</a>
+                <p class="card-text">Share your latest tracklist with the world.
+                find out who is playing what, and where to get the latest tracks!</p>
+                <a href="{{ url_for('tracklists.tracklists') }}" class="btn btn-info">Upload</a>
             </div>
 
             </div>
@@ -81,11 +81,12 @@
             <!--Card content-->
             <div class="card-body">
                 <!--Title-->
-                <h4 class="card-title">This is title</h4>
+                <h4 class="card-title">Mastering</h4>
                 <!--Text-->
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.</p>
-                <a href="#" class="btn btn-info">Read more</a>
+                <p class="card-text">We specialize on mastering DJ sets for distribution
+                on the web.
+                Find out more or Book now</p>
+                <a href="{{ url_for('booking.booking') }}" class="btn btn-info">Booking</a>
             </div>
 
             </div>
