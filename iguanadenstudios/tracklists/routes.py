@@ -8,9 +8,6 @@ tracklists_blueprint = Blueprint('tracklists', __name__,
 
 @tracklists_blueprint.route('/tracklists')
 def tracklists():
-    import pdb; pdb.set_trace()
-    # MS SQL
-    # artist_tracklist_name = TracklistName.query.with_entities(TracklistName.artist_dj_name, TracklistName.tracklist_mix_name).group_by(TracklistName.artist_dj_name, TracklistName.tracklist_mix_name).all()
     artist_tracklist_name = clean_artist_tracklist_name()
     return render_template('tracklists.html',
                             artist_tracklist_name = artist_tracklist_name
@@ -18,8 +15,6 @@ def tracklists():
 
 @tracklists_blueprint.route('/tracklists/<string:artist_dj_name>', methods = ['GET'])
 def load_tracklist(artist_dj_name = '', tracklist_mix_name = ''):
-    import pdb; pdb.set_trace()
-    # MS SQL
     tracklist_mix_name = request.args.get('tracklist_mix_name')
     tracklist = request.args.get('tracklist_mix_name')
 
@@ -33,8 +28,6 @@ def load_tracklist(artist_dj_name = '', tracklist_mix_name = ''):
                             )
 
 def clean_artist_tracklist_name():
-    import pdb; pdb.set_trace()
-
     djs = TracklistName.query.with_entities(TracklistName.artist_dj_name).group_by(TracklistName.artist_dj_name).all()
     cleaned_list = []
 
