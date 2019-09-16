@@ -2,8 +2,25 @@
 
 {% block content %}
     <div class="container">
-    <h1>Booking</h1>
         <div class="apoth-jumbotron jumbotron">
+            <h2>Booking</h2>
+            <br>
+            <article>
+                <div>
+                    <p>
+                        Have a question about our services?  Ready to get your set
+                        prepared for digital distribution?  Fill out the form
+                        below and give us all the details for a quote!
+                        <br>
+                        <br>
+                        <i>
+                            Be sure to include any additional information you
+                            would like to have included in ID3 tagging
+                        <i/>
+                    </p>
+                </div>
+            </article>
+            <br>
             <form methods='POST'>
                 {{ form.hidden_tag() }}
                 <div class="form-group row">
