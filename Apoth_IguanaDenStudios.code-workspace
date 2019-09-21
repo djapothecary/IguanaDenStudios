@@ -1576,7 +1576,7 @@
 		"workbench.editor.tabCloseButton": "right",
 		"workbench.editor.tabSizing": "fit",
 		"workbench.enableExperiments": true,
-		"workbench.iconTheme": "vs-seti",
+		"workbench.iconTheme": "material-icon-theme",
 		"workbench.list.automaticKeyboardNavigation": true,
 		"workbench.list.horizontalScrolling": false,
 		"workbench.list.keyboardNavigation": "filter",
