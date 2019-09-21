@@ -8,6 +8,7 @@ class TracklistName(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     artist_dj_name = db.Column(db.String)
     tracklist_mix_name = db.Column(db.String)
+    tracklist_genre = db.Column(db.String)
     upload_date = db.Column(db.DateTime, default = datetime.utcnow)
     # backrefs need to be unique
     tracklist_id = db.relationship('TracklistDetails', backref = 'artist_dj_id', lazy = True)

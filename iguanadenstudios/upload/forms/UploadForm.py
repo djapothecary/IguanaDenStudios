@@ -7,6 +7,7 @@ class UploadForm(FlaskForm):
     #   TODO:   add checkbox to enable file upload
     artist_dj_name = StringField('Artist/DJ Name:  ', validators = [DataRequired()])
     tracklist_mix_name = StringField('Tracklist/Mix title:  ', validators = [DataRequired()])
+    tracklist_genre = StringField('Tracklist Genre(s):  ')
     tracklist_mix_details = TextAreaField('Tracklist/Mix Details:  ', validators = [DataRequired()])
     submit = SubmitField('Submit')
 
