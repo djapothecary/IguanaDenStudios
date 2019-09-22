@@ -5,3 +5,5 @@ __pycache__
 /.vscode/.vscode
 /.vscode
 create_config.py
+*.code-workspace
+pip_updates_powershell.txt
