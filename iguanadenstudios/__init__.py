@@ -31,7 +31,7 @@ def create_app(config_name):
         SQLITEDB = Config.SQLITEDB
         app.config['SQLALCHEMY_DATABASE_URI'] = SQLITEDB
         app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    elif config_name == 'prod':
+    elif config_name == 'production' or 'prod':
         DRIVER = Config.DRIVER
         SERVER = Config.SERVER
         DATABASE = Config.DATABASE
@@ -43,8 +43,18 @@ def create_app(config_name):
         app.config['ENV'] = 'production'
         app.config['TESTING'] = False
     else:
-        SQLITEDB = Config.SQLITEDB
-        app.config['SQLALCHEMY_DATABASE_URI'] = SQLITEDB
+        # SQLITEDB = Config.SQLITEDB
+        # app.config['SQLALCHEMY_DATABASE_URI'] = SQLITEDB
+        DRIVER = Config.DRIVER
+        SERVER = Config.SERVER
+        DATABASE = Config.DATABASE
+        UID = Config.UID
+        PWD = Config.PWD
+        params = urllib.parse.quote_plus('DRIVER={'+ DRIVER +'};SERVER='+ SERVER +';DATABASE=' + DATABASE +';UID=' + UID +';PWD='+ PWD +';')
+        app.config['SQLALCHEMY_DATABASE_URI'] = "mssql+pyodbc:///?odbc_connect=%s" % params
+        app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+        app.config['ENV'] = 'production'
+        app.config['TESTING'] = False
 
     app.config.from_object(config[config_name])
     config[config_name].init_app(app)

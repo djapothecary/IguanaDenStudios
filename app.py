@@ -30,17 +30,16 @@ parser.add_argument('-p',
                     help = 'run the application in production')
 args = parser.parse_args()
 
-
-# if args.dev or args.test is not None:
-#     print('running dev configuration')
-#     app = create_app('dev')
-# elif args.prod is not None:
-#     print('running prod configuration')
-#     app = create_app('prod')
-# else:
-#     app = create_app('dev')
-
-app = create_app('prod')
+# import pdb; pdb.set_trace()
+if args.dev or args.test is not None:
+    # import pdb; pdb.set_trace()
+    # print('running dev configuration')
+    app = create_app('dev')
+elif args.prod is not None:
+    # print('running prod configuration')
+    app = create_app('production')
+else:
+    app = create_app('production')
 
 migrate = Migrate(app, db)
 
