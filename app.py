@@ -31,14 +31,16 @@ parser.add_argument('-p',
 args = parser.parse_args()
 
 
-if args.dev or args.test is not None:
-    print('running dev configuration')
-    app = create_app('dev')
-elif args.prod is not None:
-    print('running prod configuration')
-    app = create_app('prod')
-else:
-    app = create_app('dev')
+# if args.dev or args.test is not None:
+#     print('running dev configuration')
+#     app = create_app('dev')
+# elif args.prod is not None:
+#     print('running prod configuration')
+#     app = create_app('prod')
+# else:
+#     app = create_app('dev')
+
+app = create_app('prod')
 
 migrate = Migrate(app, db)
 
@@ -46,9 +48,9 @@ migrate = Migrate(app, db)
 
 @app.before_first_request
 def create_tables():
-    import pdb; pdb.set_trace()
+    # import pdb; pdb.set_trace()
     if app.config['ENV'] =='development':
-        import pdb; pdb.set_trace()
+        # import pdb; pdb.set_trace()
         db.create_all()
 
 
@@ -68,4 +70,4 @@ def index():
 #     print(url_for('mastering.mastering'))
 
 if __name__ == '__main__':
-    app.run(debug = True)
+    app.run(debug = False)
