@@ -16,7 +16,7 @@ def logout():
 
 @sign_in_blueprint.route('/sign_in', methods = ['GET', 'POST'])
 def sign_in():
-    import pdb; pdb.set_trace()
+    # import pdb; pdb.set_trace()
     form = LoginForm.LoginForm()
 
     if form.validate_on_submit():
