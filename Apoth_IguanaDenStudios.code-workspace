@@ -1415,8 +1415,7 @@
 			"**/node_modules": true,
 			"**/bower_components": true
 		},
-		"search.followSymlinks": true,
-		"search.location": "panel", //sidebar
+		"search.followSymlinks": true, //sidebar
 		"search.maintainFileSearchCache": true,
 		"search.quickOpen.includeHistory": true,
 		"search.quickOpen.includeSymbols": false,
