@@ -24,27 +24,33 @@ def create_app(config_name):
     app.config['CONFIG_NAME'] = config_name
 
     #load the appropriate configuration
-    if config_name == 'dev' or 'test':
-        app.config['ENV'] = 'development'
-        app.config['TESTING'] = True
-        app.config['DEBUG'] = True
-        SQLITEDB = Config.SQLITEDB
-        app.config['SQLALCHEMY_DATABASE_URI'] = SQLITEDB
-        app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    elif config_name == 'prod':
-        DRIVER = Config.DRIVER
-        SERVER = Config.SERVER
-        DATABASE = Config.DATABASE
-        UID = Config.UID
-        PWD = Config.PWD
-        params = urllib.parse.quote_plus('DRIVER={'+ DRIVER +'};SERVER='+ SERVER +';DATABASE=' + DATABASE +';UID=' + UID +';PWD='+ PWD +';')
-        app.config['SQLALCHEMY_DATABASE_URI'] = "mssql+pyodbc:///?odbc_connect=%s" % params
-        app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-        app.config['ENV'] = 'production'
-        app.config['TESTING'] = False
-    else:
-        SQLITEDB = Config.SQLITEDB
-        app.config['SQLALCHEMY_DATABASE_URI'] = SQLITEDB
+    # if config_name == 'dev' or 'test':
+    #     app.config['ENV'] = 'development'
+    #     app.config['TESTING'] = True
+    #     app.config['DEBUG'] = True
+    #     SQLITEDB = Config.SQLITEDB
+    #     app.config['SQLALCHEMY_DATABASE_URI'] = SQLITEDB
+    #     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    # elif config_name == 'prod':
+    #     DRIVER = Config.DRIVER
+    #     SERVER = Config.SERVER
+    #     DATABASE = Config.DATABASE
+    #     UID = Config.UID
+    #     PWD = Config.PWD
+    #     params = urllib.parse.quote_plus('DRIVER={'+ DRIVER +'};SERVER='+ SERVER +';DATABASE=' + DATABASE +';UID=' + UID +';PWD='+ PWD +';')
+    #     app.config['SQLALCHEMY_DATABASE_URI'] = "mssql+pyodbc:///?odbc_connect=%s" % params
+    #     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    #     app.config['ENV'] = 'production'
+    #     app.config['TESTING'] = False
+    # else:
+    #     SQLITEDB = Config.SQLITEDB
+    #     app.config['SQLALCHEMY_DATABASE_URI'] = SQLITEDB
+    app.config['ENV'] = 'development'
+    app.config['TESTING'] = True
+    app.config['DEBUG'] = True
+    SQLITEDB = Config.SQLITEDB
+    app.config['SQLALCHEMY_DATABASE_URI'] = SQLITEDB
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
     app.config.from_object(config[config_name])
     config[config_name].init_app(app)
