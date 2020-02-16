@@ -50,6 +50,8 @@ def create_tables():
     if app.config['ENV'] =='development':
         import pdb; pdb.set_trace()
         db.create_all()
+    else:
+        db.create_all()
 
 
 @app.shell_context_processor
