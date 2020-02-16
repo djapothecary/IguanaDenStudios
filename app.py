@@ -70,4 +70,42 @@ def index():
 #     print(url_for('mastering.mastering'))
 
 if __name__ == '__main__':
+    from argparse import ArgumentParser
+
+    parser = ArgumentParser(description = 'Configure what settings to use')
+
+    parser.add_argument("-d",
+                        "--dev",
+                        required = False,
+                        type = str,
+                        dest = 'dev',
+                        metavar = 'dev',
+                        help = 'run the application as a developer')
+    parser.add_argument('-t',
+                        '--test',
+                        required = False,
+                        type = str,
+                        dest = 'test',
+                        metavar = 'test',
+                        help = 'run the application as a tester')
+    parser.add_argument('-p',
+                        '--prod',
+                        required = False,
+                        type = str,
+                        dest = 'prod',
+                        metavar = 'prod',
+                        help = 'run the application in production')
+    args = parser.parse_args()
+
+
+    if args.dev or args.test is not None:
+        print('running dev configuration')
+        app = create_app('dev')
+    elif args.prod is not None:
+        print('running prod configuration')
+        app = create_app('prod')
+    else:
+        app = create_app('dev')
+
+    migrate = Migrate(app, db)
     app.run(debug = True)
