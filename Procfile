@@ -1,2 +1,1 @@
-web: gunicorn app:app
-release: flask [-d dev]
+web: flask app:app
