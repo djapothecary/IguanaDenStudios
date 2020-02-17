@@ -38,8 +38,8 @@ from argparse import ArgumentParser
 # else:
 #     app = create_app('dev')
 
-migrate = Migrate(app, db)
 app = create_app()
+migrate = Migrate(app, db)
 
 @app.before_first_request
 def create_tables():
