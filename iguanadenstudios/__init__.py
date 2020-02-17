@@ -4,17 +4,49 @@ from flask_migrate import Migrate
 from flask_login import LoginManager
 from configparser import ConfigParser
 from crypto import crypt
+from iguanadenstudios.config import Config, config
 
 # Globally accessible libraries
 login_manager = LoginManager()
 db = SQLAlchemy()
+#TODO:  may not need this one because of static and mdb bootstrap files
+# bootstrap = Bootstrap()
+# mail = Mail()
+# moment = Moment()
 
-def create_app():
+def create_app(config_name = None):
     """Initialize the core app"""
     app = Flask(__name__, instance_relative_config = False)
-    app.config.from_object('config.DevelopmentConfig')
-    # app.config.from_object(config[config_name])
-    # config[config_name].init_app(app)
+    #app.config.from_object('config.DevelopmentConfig')
+
+    app.config['SECRET_KEY'] = Config.SECRET_KEY
+    app.config['CONFIG_NAME'] = config_name
+
+    #load the appropriate configuration
+    if config_name == 'dev' or 'test':
+        app.config['ENV'] = 'development'
+        app.config['TESTING'] = True
+        app.config['DEBUG'] = True
+        SQLITEDB = Config.SQLITEDB
+        app.config['SQLALCHEMY_DATABASE_URI'] = SQLITEDB
+        app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    elif config_name == 'prod':
+        DRIVER = Config.DRIVER
+        SERVER = Config.SERVER
+        DATABASE = Config.DATABASE
+        UID = Config.UID
+        PWD = Config.PWD
+        params = urllib.parse.quote_plus('DRIVER={'+ DRIVER +'};SERVER='+ SERVER +';DATABASE=' + DATABASE +';UID=' + UID +';PWD='+ PWD +';')
+        app.config['SQLALCHEMY_DATABASE_URI'] = "mssql+pyodbc:///?odbc_connect=%s" % params
+        app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+        app.config['ENV'] = 'production'
+        app.config['TESTING'] = False
+    else:
+        SQLITEDB = Config.SQLITEDB
+        app.config['SQLALCHEMY_DATABASE_URI'] = SQLITEDB
+
+    app.config.from_object(config[config_name])
+    config[config_name].init_app(app)
 
     # bootstrap.init_app(app)
     # mail.init_app(app)
@@ -31,6 +63,11 @@ def create_app():
     login_manager.login_view = 'sign_in'
 
     with app.app_context():
+        # define the index page
+        @app.route('/')
+        def index():
+            return render_template('index.html')
+
         # include the routes
         from iguanadenstudios.about_us.routes import about_us_blueprint
         from iguanadenstudios.audiotools.routes import audiotools_blueprint
@@ -41,11 +78,6 @@ def create_app():
         from iguanadenstudios.sign_in.routes import sign_in_blueprint
         from iguanadenstudios.upload.routes import upload_blueprint
         from iguanadenstudios.error_pages.handlers import error_pages
-
-        # define the index page
-        @app.route('/')
-        def index():
-            return render_template('index.html')
 
         # register blueprints
         # using url_prefix allows the changing of how the url displays.  the below example produces:
