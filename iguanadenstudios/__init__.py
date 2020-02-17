@@ -27,9 +27,8 @@ def create_app(config_name = ''):
     app.config['TESTING'] = True
     app.config['DEBUG'] = True
     #SQLITEDB = Config.SQLITEDB
-    app.config['SQLALCHEMY_DATABASE_URI'] = SQLITEDB
+    #app.config['SQLALCHEMY_DATABASE_URI'] = SQLITEDB
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    app.config['SQLALCHEMY_DATABASE_URI'] = SQLITEDB
 
     app.config.from_object('config.DevelopmentConfig')
     # app.config.from_object(config[config_name])
