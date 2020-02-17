@@ -26,12 +26,20 @@ def register():
     form = RegistrationForm.RegistrationForm()
 
     if form.validate_on_submit():
+        import pdb; pdb.set_trace()
         user = User(email = form.email.data,
                     username = form.username.data,
                     password = form.password.data)
-        db.session.add(user)
-        db.session.commit()
-        flash('Thank you for registering!')
-        return redirect(url_for('index'))
+        exists = db.session.query(
+                db.session.query(User).filter_by(email = form.email.data)
+                .exists()).scalar()
+        if not exists:
+            db.session.add(user)
+            db.session.commit()
+            flash('Thank you for registering!')
+            return redirect(url_for('tracklists.tracklist'))
+        else:
+            flash('This email address has already been registered!')
+            return redirect(url_for('index'))
 
     return render_template('register.html', form = form)
