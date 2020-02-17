@@ -39,7 +39,7 @@ else:
     app = create_app('dev')
 
 migrate = Migrate(app, db)
-#app = create_app()
+app = create_app('dev')
 
 @app.before_first_request
 def create_tables():
