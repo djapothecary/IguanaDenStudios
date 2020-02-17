@@ -40,27 +40,27 @@ def create_app(config_name = ''):
     db = SQLAlchemy(app)
     #Migrate(app, db)
 
-    # check if database exists
-    import sqlite3
-    #import pdb; pdb.set_trace()
-    #existing_db = db_engine.execute("SHOW DATABASES;")
-    conn = sqlite3.connect('data.db')
-    try:
-        conn.execute("SELECT * FROM Tracklists")
-    except sqlite3.OperationalError:
-        #db_engine = sqla.create_engine('sqlite:///data.db')
-        basedir = os.path.abspath(os.path.dirname(__file__))
+    # # check if database exists
+    # import sqlite3
+    # #import pdb; pdb.set_trace()
+    # #existing_db = db_engine.execute("SHOW DATABASES;")
+    # conn = sqlite3.connect('data.db')
+    # try:
+    #     conn.execute("SELECT * FROM Tracklists")
+    # except sqlite3.OperationalError:
+    #     #db_engine = sqla.create_engine('sqlite:///data.db')
+    #     basedir = os.path.abspath(os.path.dirname(__file__))
 
-        # build the parser
-        parser = ConfigParser()
-        parser.read('dev.ini')
+    #     # build the parser
+    #     parser = ConfigParser()
+    #     parser.read('dev.ini')
 
-        # build the 'crypter'
-        crypter = crypt.Crypt()
-        crypt_key = 'MyKey4TestingYnP'
-        #sqlite database settings
-        SQLITEDB = crypter.decrypt(parser.get('sqlitedatabase', 'sqlitedb'), crypt_key)
-        app.config['SQLALCHEMY_DATABASE_URI'] = SQLITEDB
+    #     # build the 'crypter'
+    #     crypter = crypt.Crypt()
+    #     crypt_key = 'MyKey4TestingYnP'
+    #     #sqlite database settings
+    #     SQLITEDB = crypter.decrypt(parser.get('sqlitedatabase', 'sqlitedb'), crypt_key)
+    #     app.config['SQLALCHEMY_DATABASE_URI'] = SQLITEDB
 
     db.init_app(app)
 
