@@ -16,7 +16,8 @@ db = SQLAlchemy()
 
 def create_app(config_name = None):
     """Initialize the core app"""
-    app = Flask(__name__, instance_relative_config = False)
+    #import pdb; pdb.set_trace()
+    app = Flask(__name__, instance_relative_config = True)
     #app.config.from_object('config.DevelopmentConfig')
 
     app.config['SECRET_KEY'] = Config.SECRET_KEY
