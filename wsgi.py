@@ -29,17 +29,17 @@ parser.add_argument('-p',
 args = parser.parse_args()
 
 
-if args.dev or args.test is not None:
-    print('running dev configuration')
-    app = create_app('dev')
-elif args.prod is not None:
-    print('running prod configuration')
-    app = create_app('prod')
-else:
-    app = create_app('dev')
+# if args.dev or args.test is not None:
+#     print('running dev configuration')
+#     app = create_app('dev')
+# elif args.prod is not None:
+#     print('running prod configuration')
+#     app = create_app('prod')
+# else:
+#     app = create_app('dev')
 
 migrate = Migrate(app, db)
-#app = create_app('dev')
+app = create_app('dev')
 
 @app.before_first_request
 def create_tables():
