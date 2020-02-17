@@ -1,8 +1,11 @@
+import os
+import sqlalchemy
 from flask import Flask, render_template
 # from flask_bootstrap import Bootstrap
 # from flask_mail import Mail
 # from flask_moment import Moment
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import create_engine
 from flask_migrate import Migrate
 from flask_login import LoginManager
 from configparser import ConfigParser
@@ -36,6 +39,28 @@ def create_app(config_name = ''):
 
     db = SQLAlchemy(app)
     #Migrate(app, db)
+
+    # check if database exists
+    import sqlite3
+    #import pdb; pdb.set_trace()
+    #existing_db = db_engine.execute("SHOW DATABASES;")
+    conn = sqlite3.connect('data.db')
+    try:
+        conn.execute("SELECT * FROM Tracklists")
+    except sqlite3.OperationalError:
+        #db_engine = sqla.create_engine('sqlite:///data.db')
+        basedir = os.path.abspath(os.path.dirname(__file__))
+
+        # build the parser
+        parser = ConfigParser()
+        parser.read('dev.ini')
+
+        # build the 'crypter'
+        crypter = crypt.Crypt()
+        crypt_key = 'MyKey4TestingYnP'
+        #sqlite database settings
+        SQLITEDB = crypter.decrypt(parser.get('sqlitedatabase', 'sqlitedb'), crypt_key)
+        app.config['SQLALCHEMY_DATABASE_URI'] = SQLITEDB
 
     db.init_app(app)
 
@@ -76,3 +101,5 @@ def create_app(config_name = ''):
         app.register_blueprint(error_pages)
 
         return app
+
+
