@@ -1,4 +1,7 @@
 from flask import Flask, render_template
+# from flask_bootstrap import Bootstrap
+# from flask_mail import Mail
+# from flask_moment import Moment
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
@@ -9,16 +12,17 @@ from crypto import crypt
 login_manager = LoginManager()
 db = SQLAlchemy()
 
-def create_app():
+#TODO:  may not need this one because of static and mdb bootstrap files
+# bootstrap = Bootstrap()
+# mail = Mail()
+# moment = Moment()
+
+def create_app(config_name = ''):
     """Initialize the core app"""
     app = Flask(__name__, instance_relative_config = False)
     app.config.from_object('config.DevelopmentConfig')
     # app.config.from_object(config[config_name])
     # config[config_name].init_app(app)
-
-    # bootstrap.init_app(app)
-    # mail.init_app(app)
-    # moment.init_app(app)
 
     db = SQLAlchemy(app)
     #Migrate(app, db)
