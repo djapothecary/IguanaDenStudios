@@ -1,4 +1,5 @@
 from iguanadenstudios import create_app, db
+from flask_migrate import Migrate
 from argparse import ArgumentParser
 
 parser = ArgumentParser(description = 'Configure what settings to use')
