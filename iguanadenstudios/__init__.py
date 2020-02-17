@@ -17,9 +17,9 @@ db = SQLAlchemy()
 def create_app(config_name = None):
     """Initialize the core app"""
     #import pdb; pdb.set_trace()
-    # app = Flask(__name__, instance_relative_config = True)
-    app = Flask(__name__)
-    #app.config.from_object('config.DevelopmentConfig')
+    app = Flask(__name__, instance_relative_config = False)
+    #app = Flask(__name__)
+    app.config.from_object('config.DevelopmentConfig')
 
     app.config['SECRET_KEY'] = Config.SECRET_KEY
     app.config['CONFIG_NAME'] = config_name
@@ -48,7 +48,7 @@ def create_app(config_name = None):
         app.config['SQLALCHEMY_DATABASE_URI'] = SQLITEDB
 
     #app.config.from_object(config[config_name])
-    app.config.from_object('config.DevelopmentConfig')
+    #app.config.from_object('config.DevelopmentConfig')
     config[config_name].init_app(app)
 
     # bootstrap.init_app(app)
