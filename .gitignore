@@ -7,3 +7,4 @@ __pycache__
 create_config.py
 *.code-workspace
 pip_updates_powershell.txt
+iguanadenstudios/__init__old.py
