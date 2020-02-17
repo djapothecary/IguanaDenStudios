@@ -1,2 +1,2 @@
-web: gunicorn -w 4 "wsgi:create_app()"
+web: gunicorn -d dev "wsgi:create_app()"
 #web: gunicorn app:create_app()
