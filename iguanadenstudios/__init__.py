@@ -21,7 +21,7 @@ def create_app(config_name = ''):
     """Initialize the core app"""
     app = Flask(__name__, instance_relative_config = False)
 
-    app.config['SECRET_KEY'] = Config.SECRET_KEY
+    #app.config['SECRET_KEY'] = Config.SECRET_KEY
     app.config['CONFIG_NAME'] = config_name
     app.config['ENV'] = 'development'
     app.config['TESTING'] = True
