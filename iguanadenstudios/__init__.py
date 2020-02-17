@@ -47,6 +47,7 @@ def create_app(config_name = None):
         app.config['SQLALCHEMY_DATABASE_URI'] = SQLITEDB
 
     app.config.from_object(config[config_name])
+    app.config.from_object('config.DevelopmentConfig')
     config[config_name].init_app(app)
 
     # bootstrap.init_app(app)
