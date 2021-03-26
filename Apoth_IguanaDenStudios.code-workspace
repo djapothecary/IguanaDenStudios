@@ -1313,7 +1313,6 @@
 		"python.maxNumberOfProblems": 100,
 		"python.pipenvPath": "pipenv",
 		"python.poetryPath": "poetry",
-		"python.pythonPath": "python",
 
 		//    python.sortImports
 		"python.sortImports.args": [
