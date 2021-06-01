@@ -44,7 +44,7 @@ requests-oauthlib==1.2.0
 six==1.12.0
 SQLAlchemy==1.2.6
 SQLAlchemy-Utils==0.34.2
-urllib3==1.25.5
+urllib3==1.26.5
 URLObject==2.4.3
 uwsgi
 visitor==0.1.3
